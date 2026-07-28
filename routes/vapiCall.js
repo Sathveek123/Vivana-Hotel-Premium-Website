@@ -80,11 +80,24 @@ async function triggerVapiCall({ guestName, phoneNumber, checkIn, checkOut, room
 
         return { success: true, callId, phone: formattedPhone };
     } catch (error) {
-        const errDetails = error.response?.data || error.message;
+        const errDetails = error.response?.data || { message: error.message };
+        const errorMsg = errDetails.message || 'Vapi API error';
         console.error('[VAPI OUTBOUND ERROR]:', errDetails);
-        return { success: false, error: errDetails };
+
+        if (bookingId) {
+            const data = helperReadData();
+            const booking = data.bookings.find(b => b.id === bookingId);
+            if (booking) {
+                booking.vapi_call_status = 'failed';
+                booking.vapi_transcript = `Call Failed: ${errorMsg}`;
+                helperWriteData(data);
+            }
+        }
+
+        return { success: false, error: errorMsg, details: errDetails };
     }
 }
+
 
 // Endpoint: POST /api/trigger-call
 router.post('/trigger-call', async (req, res) => {
