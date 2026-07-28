@@ -25,6 +25,10 @@ function helperWriteData(data) {
 
 // Function to trigger call to Vapi
 async function triggerVapiCall({ guestName, phoneNumber, checkIn, checkOut, roomType, guests, bookingId }) {
+    const apiKey = process.env.VAPI_API_KEY || '8e8821d9-783d-44c0-8927-16428c43ecf1';
+    const phoneNumberId = process.env.VAPI_PHONE_NUMBER_ID || '8f635a0f-9502-4c3e-97de-e597199a2e98';
+    const assistantId = process.env.VAPI_ASSISTANT_ID || '4dd1ec55-decb-438d-8966-cccdb4e71da0';
+
     let formattedPhone = (phoneNumber || '').replace(/[\s\-\(\)]/g, '');
     if (!formattedPhone.startsWith('+')) {
         if (formattedPhone.length === 10) {
@@ -37,12 +41,12 @@ async function triggerVapiCall({ guestName, phoneNumber, checkIn, checkOut, room
     }
 
     const payload = {
-        phoneNumberId: process.env.VAPI_PHONE_NUMBER_ID,
+        phoneNumberId: phoneNumberId,
         customer: {
             number: formattedPhone,
             name: guestName || 'Valued Guest'
         },
-        assistantId: process.env.VAPI_ASSISTANT_ID,
+        assistantId: assistantId,
         assistantOverrides: {
             variableValues: {
                 guestName: guestName || 'Valued Guest',
@@ -59,10 +63,11 @@ async function triggerVapiCall({ guestName, phoneNumber, checkIn, checkOut, room
     try {
         const response = await axios.post('https://api.vapi.ai/call/phone', payload, {
             headers: {
-                Authorization: `Bearer ${process.env.VAPI_API_KEY}`,
+                Authorization: `Bearer ${apiKey}`,
                 'Content-Type': 'application/json'
             }
         });
+
 
         const callId = response.data?.id || `VAPI-CALL-${Date.now()}`;
         console.log(`[VAPI OUTBOUND SUCCESS] Call Initiated! Call ID: ${callId}`);

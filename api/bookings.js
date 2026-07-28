@@ -89,16 +89,29 @@ module.exports = async (req, res) => {
         data.bookings.unshift(newBooking);
         writeData(data);
 
-        // Async Vapi call trigger
-        triggerVapiCall({
-            guestName: guest_name,
-            phoneNumber: phone,
-            checkIn: checkin_date,
-            checkOut: checkout_date,
-            roomType: room_type,
-            guests: guests_count || '2 Adults',
-            bookingId: reference_id
-        }).catch(err => console.error(err));
+        // Await Vapi call trigger so Vercel Serverless process does not terminate before API request finishes
+        let vapiCallResult = null;
+        try {
+            vapiCallResult = await triggerVapiCall({
+                guestName: guest_name,
+                phoneNumber: phone,
+                checkIn: checkin_date,
+                checkOut: checkout_date,
+                roomType: room_type,
+                guests: guests_count || '2 Adults',
+                bookingId: reference_id
+            });
+            if (vapiCallResult && vapiCallResult.success) {
+                newBooking.vapi_call_status = 'initiated';
+                newBooking.vapi_call_id = vapiCallResult.callId;
+            } else if (vapiCallResult && vapiCallResult.error) {
+                newBooking.vapi_call_status = 'failed';
+                newBooking.vapi_transcript = `Call Failed: ${vapiCallResult.error}`;
+            }
+        } catch (vapiErr) {
+            console.error('Vapi call execution error:', vapiErr);
+        }
+
 
         return res.status(201).json({
             success: true,
