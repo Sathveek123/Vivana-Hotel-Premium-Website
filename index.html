@@ -1,0 +1,900 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+    <title>Vivana Hotel Siripuram | Luxury Stay Near Ramakrishna Beach, Visakhapatnam</title>
+    <meta name="description" content="Experience refined comfort at Vivana, Siripuram's top-rated 3-star boutique hotel. 2km from Ramakrishna Beach. Famous Rasa Kitchen Mutton Pulao, pool, & 24/7 staff hospitality.">
+    <meta name="keywords" content="Vivana Hotel, Siripuram Visakhapatnam, Hotels near RK Beach, Luxury stay Vizag, Rasa Kitchen mutton pulao, Pandu Mirchi Biryani, Murali Sir staff">
+    <link rel="icon" href="img/ficon.png">
+    
+    <!-- Preload Fonts & Video Poster -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="css/bootstrap.css">
+    <!-- Custom Style CSS -->
+    <link rel="stylesheet" href="css/style.css">
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Schema.org Structured Data (JSON-LD) -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Hotel",
+      "name": "HOTEL Vivana",
+      "image": "http://localhost:3000/img/1.avif",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Circle, Vivana Rd, opp. W N S, Siripuram",
+        "addressLocality": "Visakhapatnam",
+        "addressRegion": "Andhra Pradesh",
+        "postalCode": "530003",
+        "addressCountry": "IN"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": 17.723147,
+        "longitude": 83.314728
+      },
+      "url": "http://localhost:3000",
+      "telephone": "+918912705000",
+      "priceRange": "₹3499 - ₹14999",
+      "aggregateRating": {
+        "@type": "AggregateRating",
+        "ratingValue": "4.2",
+        "reviewCount": "3034"
+      }
+    }
+    </script>
+</head>
+
+<body>
+
+    <!-- TOP MINI ANNOUNCEMENT BAR WITH INTEGRATED TIDE INFO -->
+    <div class="top-announcement-bar d-none d-md-block">
+        <div class="container-fluid px-lg-5">
+            <div class="d-flex justify-content-between align-items-center">
+                <div>
+                    <span class="me-3"><i class="fa-solid fa-sun text-warning me-1"></i> Sunrise 5:47 AM • Sunset 6:32 PM</span>
+                    <span class="me-3">• <i class="fa-solid fa-umbrella-beach text-gold me-1"></i> RK Beach (2 km): Best walk hours 5:30–7:30 AM</span>
+                </div>
+                <div class="d-flex align-items-center gap-3">
+                    <span><i class="fa-solid fa-gift text-gold me-1"></i> Direct Code: <strong>VIVANA10</strong> (10% OFF)</span>
+                    <span class="small border-start ps-3"><i class="fa-solid fa-globe me-1 text-gold"></i> English</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- FIXED GLASSMORPHIC NAVIGATION BAR -->
+    <nav class="navbar navbar-expand-lg custom-nav" id="mainNavbar">
+        <div class="container-fluid px-lg-5">
+            <a class="navbar-brand d-flex align-items-center" href="index.html">
+                <span class="nav-brand-text">VIVANA <span>HOTEL</span></span>
+            </a>
+            
+            <button class="navbar-toggler border-0 text-dark" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarContent" aria-controls="navbarContent" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <i class="fa-solid fa-bars fs-4"></i>
+            </button>
+
+            <div class="collapse navbar-collapse justify-content-end" id="navbarContent">
+                <ul class="navbar-nav align-items-center me-lg-4 mb-3 mb-lg-0">
+                    <li class="nav-item"><a class="nav-link" href="about.html">ABOUT</a></li>
+                    <li class="nav-item"><a class="nav-link" href="rooms.html">ROOMS</a></li>
+                    <li class="nav-item"><a class="nav-link" href="dining.html">DINING</a></li>
+                    <li class="nav-item"><a class="nav-link" href="events.html">WEDDINGS</a></li>
+                    <li class="nav-item"><a class="nav-link" href="offers.html">OFFERS</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#reviews">REVIEWS</a></li>
+                    <li class="nav-item"><a class="nav-link" href="contact.html">CONTACT</a></li>
+                    <li class="nav-item ms-lg-2">
+                        <a class="nav-link text-gold" href="#" data-bs-toggle="modal" data-bs-target="#membershipModal">
+                            <i class="fa-regular fa-circle-user me-1"></i> LOGIN / JOIN
+                        </a>
+                    </li>
+                </ul>
+
+                <button class="btn btn-book-stay" data-bs-toggle="modal" data-bs-target="#bookingModal">
+                    BOOK A STAY
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- UN-CLUTTERED ULTRA-LUXURY HERO SECTION -->
+    <section class="hero-wrapper">
+        <video autoplay muted loop playsinline class="bg-video">
+            <source src="img/vivana_hero.mp4" type="video/mp4">
+        </video>
+        <div class="hero-overlay"></div>
+
+        <div class="container hero-content">
+            <div class="row justify-content-center">
+                <div class="col-lg-10 text-center">
+                    
+                    <span class="hero-eyebrow"><i class="fa-solid fa-star text-warning me-1"></i> 4.2★ Rated by 3,034+ Verified Guests</span>
+
+                    <h1 class="hero-title">VIZAG'S PRIDE, COASTAL COMFORT</h1>
+                    <p class="hero-subtitle">"Where the City Meets the Coast"</p>
+                    <p class="lead text-light d-none d-md-block max-w-700 mx-auto mb-4">
+                        Siripuram's premier 3-star contemporary hotel, positioned as an elevated boutique luxury stay just 2 km from Ramakrishna Beach.
+                    </p>
+
+                    <!-- Sleek Booking Widget -->
+                    <div class="booking-widget text-start">
+                        <form class="row g-3 align-items-end">
+                            <div class="col-md-3 col-6">
+                                <label><i class="fa-regular fa-calendar-check me-1"></i> Check-In</label>
+                                <input type="date" class="form-control checkin-date">
+                            </div>
+                            <div class="col-md-3 col-6">
+                                <label><i class="fa-regular fa-calendar-xmark me-1"></i> Check-Out</label>
+                                <input type="date" class="form-control checkout-date">
+                            </div>
+                            <div class="col-md-3 col-6">
+                                <label><i class="fa-solid fa-users me-1"></i> Guests & Rooms</label>
+                                <select class="form-select">
+                                    <option selected>2 Adults, 1 Room</option>
+                                    <option>1 Adult, 1 Room</option>
+                                    <option>2 Adults, 2 Rooms</option>
+                                    <option>Family Suite (4+ Guests)</option>
+                                </select>
+                            </div>
+                            <div class="col-md-3 col-6">
+                                <button type="button" class="btn btn-book-stay w-100 py-3" data-bs-toggle="modal" data-bs-target="#bookingModal">
+                                    CHECK AVAILABILITY
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+
+                    <!-- SECURITY TRUST BADGES -->
+                    <div class="security-trust-badges">
+                        <span><i class="fa-solid fa-lock"></i> 256-Bit SSL Encrypted</span> • 
+                        <span><i class="fa-solid fa-shield-check"></i> PCI-DSS Compliant</span> • 
+                        <span><i class="fa-solid fa-circle-check"></i> Instant Booking Confirmation</span>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- AWARDS & RECOGNITION BAR -->
+    <section class="awards-recognition-bar">
+        <div class="container">
+            <div class="row align-items-center g-4">
+                <div class="col-lg-3 col-md-6">
+                    <div class="award-item">
+                        <div class="award-icon"><i class="fa-solid fa-trophy"></i></div>
+                        <div>
+                            <h6 class="fw-bold mb-0 text-dark">Best Boutique Stay 2025</h6>
+                            <span class="small text-muted">Vizag Hospitality Excellence</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-3 col-md-6">
+                    <div class="award-item">
+                        <div class="award-icon"><i class="fa-solid fa-award"></i></div>
+                        <div>
+                            <h6 class="fw-bold mb-0 text-dark">4.2★ Guest Excellence</h6>
+                            <span class="small text-muted">3,034+ Google & TripAdvisor Reviews</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-3 col-md-6">
+                    <div class="award-item">
+                        <div class="award-icon"><i class="fa-brands fa-google"></i></div>
+                        <div>
+                            <h6 class="fw-bold mb-0 text-dark">Top Rated in Siripuram</h6>
+                            <span class="small text-muted">Business & Leisure Landmark</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-3 col-md-6">
+                    <div class="award-item">
+                        <div class="award-icon"><i class="fa-solid fa-utensils"></i></div>
+                        <div>
+                            <h6 class="fw-bold mb-0 text-dark">Famous Rasa Kitchen</h6>
+                            <span class="small text-muted">Grandmother's Konaseema Mutton Pulao</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SOCIAL PROOF STATS COUNTER BAR -->
+    <section class="stats-counter-bar">
+        <div class="container">
+            <div class="row text-center g-4">
+                <div class="col-md-3 col-6">
+                    <div class="stat-number">3,034+</div>
+                    <div class="stat-label">Verified Guest Reviews</div>
+                </div>
+                <div class="col-md-3 col-6">
+                    <div class="stat-number">4.2★</div>
+                    <div class="stat-label">Average Guest Rating</div>
+                </div>
+                <div class="col-md-3 col-6">
+                    <div class="stat-number">10+</div>
+                    <div class="stat-label">Years of Hospitality</div>
+                </div>
+                <div class="col-md-3 col-6">
+                    <div class="stat-number">2 km</div>
+                    <div class="stat-label">From RK Beach & Coast</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ASK MURALI - NAMED LOCAL CONCIERGE Q&A SECTION -->
+    <section class="about-section bg-alt border-top border-bottom">
+        <div class="container">
+            <div class="row align-items-center g-5">
+                <div class="col-lg-5 text-center text-lg-start">
+                    <div class="reviewer-avatar mx-auto mx-lg-0 mb-3" style="width:80px; height:80px; font-size:28px;">M</div>
+                    <span class="section-subtitle">LOCAL HOSPITALITY CORNER</span>
+                    <h2 class="fw-bold text-dark mb-2">Have a Question Only a Local Would Know?</h2>
+                    <p class="text-muted small mb-3">
+                        "Murali has been with us for years, and there's not much about Siripuram — or Vivana — he doesn't know. Best time to walk the beach without the crowds? Where to get the best filter coffee nearby? Which room actually gets the quietest sleep? Ask him."
+                    </p>
+                    <a href="https://wa.me/918912705000?text=Hello%20Murali%20Sir,%20I%20have%20a%20question%20about%20staying%20at%20HOTEL%20Vivana." target="_blank" class="btn btn-book-stay py-2 px-4">
+                        <i class="fa-brands fa-whatsapp me-1"></i> ASK MURALI DIRECTLY
+                    </a>
+                </div>
+
+                <div class="col-lg-7">
+                    <div class="ask-murali-box">
+                        <h5 class="fw-bold text-dark mb-3"><i class="fa-solid fa-comments text-gold me-2"></i> Frequently Asked Local Questions</h5>
+                        <div class="mb-3 border-bottom pb-2">
+                            <strong class="text-dark d-block">Q: Which room is quietest for deep sleep after business meetings?</strong>
+                            <span class="small text-muted">A: "Ask for Room 219 — courtyard-facing, quieter than anything on the street side, and catches the morning sea breeze." — Murali</span>
+                        </div>
+                        <div class="mb-3 border-bottom pb-2">
+                            <strong class="text-dark d-block">Q: How far is Ramakrishna Beach for an early morning walk?</strong>
+                            <span class="small text-muted">A: "Exactly 2 km down Siripuram main road. An easy 5-minute auto ride or a refreshing 20-minute morning walk." — Murali</span>
+                        </div>
+                        <div>
+                            <strong class="text-dark d-block">Q: Is the Mutton Pulao at Rasa Kitchen really made fresh to order?</strong>
+                            <span class="small text-muted">A: "Yes! We dum-cook fresh in small batches based on our founding chef's grandmother's Konaseema recipe. Takes 25-30 mins, but worth it." — Murali</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ROOMS & SUITES SECTION WITH EXPLICIT LEFT & RIGHT ARROW CAROUSEL -->
+    <section class="rooms-section" id="rooms">
+        <div class="container">
+            <div class="d-flex align-items-center justify-content-between mb-4">
+                <div>
+                    <span class="section-subtitle text-start d-block mb-1">ACCOMMODATIONS</span>
+                    <h2 class="h2 heading-font text-dark mb-0">Luxurious Rooms & Suites</h2>
+                    <p class="text-muted small mb-0">Use the left & right arrow buttons to scroll through luxury inventory</p>
+                </div>
+                <!-- Left & Right Arrow Navigation Buttons -->
+                <div class="d-flex gap-2">
+                    <button class="slider-arrow-btn arrow-prev" onclick="scrollContainer('homeRoomsContainer', -360)" title="Previous Rooms">
+                        <i class="fa-solid fa-chevron-left"></i>
+                    </button>
+                    <button class="slider-arrow-btn arrow-next" onclick="scrollContainer('homeRoomsContainer', 360)" title="Next Rooms">
+                        <i class="fa-solid fa-chevron-right"></i>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Horizontal Scroll Container -->
+            <div class="horizontal-scroll-container" id="homeRoomsContainer">
+                <!-- Deluxe Room -->
+                <div>
+                    <div class="room-canvas-wrapper">
+                        <div class="room-canvas-img-box">
+                            <img src="img/lr1.avif" alt="Deluxe Room" loading="lazy" decoding="async">
+                            <span class="room-badge"><i class="fa-solid fa-tag me-1"></i> Free Cancellation</span>
+                        </div>
+                        <div class="p-4">
+                            <span class="scarcity-pill"><i class="fa-solid fa-fire me-1"></i> Only 3 left for selected dates</span>
+                            <h4 class="room-title fs-5">Deluxe Room</h4>
+                            <p class="room-desc small">Sophisticated comfort featuring king-size bedding, smart TV, tea/coffee station, & city views.</p>
+                            <div class="room-features mb-3">
+                                <span class="feature-tag"><i class="fa-solid fa-wifi"></i> Free WiFi</span>
+                                <span class="feature-tag"><i class="fa-solid fa-snowflake"></i> AC</span>
+                                <span class="feature-tag"><i class="fa-solid fa-tv"></i> Smart TV</span>
+                            </div>
+                            <div class="d-flex align-items-center justify-content-between">
+                                <div>
+                                    <div><span class="price-strike">₹4,499</span><span class="room-price-val fs-5">₹3,499</span></div>
+                                    <div class="room-price-period x-small">per night + taxes</div>
+                                </div>
+                                <button class="btn btn-book-stay py-2 px-3 btn-sm" data-bs-toggle="modal" data-bs-target="#bookingModal">BOOK NOW</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Premium Room -->
+                <div>
+                    <div class="room-canvas-wrapper">
+                        <div class="room-canvas-img-box">
+                            <img src="img/lr2.avif" alt="Premium Room" loading="lazy" decoding="async">
+                            <span class="room-badge"><i class="fa-solid fa-tag me-1"></i> Free Cancellation</span>
+                        </div>
+                        <div class="p-4">
+                            <span class="scarcity-pill"><i class="fa-solid fa-fire me-1"></i> High Demand</span>
+                            <h4 class="room-title fs-5">Premium Room</h4>
+                            <p class="room-desc small">Spacious luxury with pool-view balcony, work desk, mini bar, and rain shower bath.</p>
+                            <div class="room-features mb-3">
+                                <span class="feature-tag"><i class="fa-solid fa-wifi"></i> WiFi</span>
+                                <span class="feature-tag"><i class="fa-solid fa-wine-glass"></i> Mini Bar</span>
+                                <span class="feature-tag"><i class="fa-solid fa-shower"></i> Rain Shower</span>
+                            </div>
+                            <div class="d-flex align-items-center justify-content-between">
+                                <div>
+                                    <div><span class="price-strike">₹6,299</span><span class="room-price-val fs-5">₹4,999</span></div>
+                                    <div class="room-price-period x-small">per night + taxes</div>
+                                </div>
+                                <button class="btn btn-book-stay py-2 px-3 btn-sm" data-bs-toggle="modal" data-bs-target="#bookingModal">BOOK NOW</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Executive Suite -->
+                <div>
+                    <div class="room-canvas-wrapper">
+                        <div class="room-canvas-img-box">
+                            <img src="img/lr3.avif" alt="Executive Suite" loading="lazy" decoding="async">
+                            <span class="room-badge"><i class="fa-solid fa-tag me-1"></i> Free Cancellation</span>
+                        </div>
+                        <div class="p-4">
+                            <span class="scarcity-pill"><i class="fa-solid fa-fire me-1"></i> Only 2 Suites left</span>
+                            <h4 class="room-title fs-5">Executive Suite</h4>
+                            <p class="room-desc small">Palatial suite featuring a separate living room, dining area, & premium executive benefits.</p>
+                            <div class="room-features mb-3">
+                                <span class="feature-tag"><i class="fa-solid fa-couch"></i> Living Lounge</span>
+                                <span class="feature-tag"><i class="fa-solid fa-bath"></i> Deep Tub</span>
+                                <span class="feature-tag"><i class="fa-solid fa-crown"></i> VIP Perks</span>
+                            </div>
+                            <div class="d-flex align-items-center justify-content-between">
+                                <div>
+                                    <div><span class="price-strike">₹9,499</span><span class="room-price-val fs-5">₹7,499</span></div>
+                                    <div class="room-price-period x-small">per night + taxes</div>
+                                </div>
+                                <button class="btn btn-book-stay py-2 px-3 btn-sm" data-bs-toggle="modal" data-bs-target="#bookingModal">BOOK NOW</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Family Suite -->
+                <div>
+                    <div class="room-canvas-wrapper">
+                        <div class="room-canvas-img-box">
+                            <img src="img/lr4.avif" alt="Family Suite" loading="lazy" decoding="async">
+                            <span class="room-badge"><i class="fa-solid fa-tag me-1"></i> Free Cancellation</span>
+                        </div>
+                        <div class="p-4">
+                            <span class="scarcity-pill"><i class="fa-solid fa-users me-1"></i> Ideal for 4+ Guests</span>
+                            <h4 class="room-title fs-5">Family Suite</h4>
+                            <p class="room-desc small">Generous two-bedroom suite crafted for families with kitchenette & 24/7 butler service.</p>
+                            <div class="room-features mb-3">
+                                <span class="feature-tag"><i class="fa-solid fa-bed"></i> 2 Bedrooms</span>
+                                <span class="feature-tag"><i class="fa-solid fa-kitchen-set"></i> Kitchenette</span>
+                                <span class="feature-tag"><i class="fa-solid fa-bell"></i> Butler</span>
+                            </div>
+                            <div class="d-flex align-items-center justify-content-between">
+                                <div>
+                                    <div><span class="price-strike">₹12,999</span><span class="room-price-val fs-5">₹9,999</span></div>
+                                    <div class="room-price-period x-small">per night + taxes</div>
+                                </div>
+                                <button class="btn btn-book-stay py-2 px-3 btn-sm" data-bs-toggle="modal" data-bs-target="#bookingModal">BOOK NOW</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Presidential Suite -->
+                <div>
+                    <div class="room-canvas-wrapper">
+                        <div class="room-canvas-img-box">
+                            <img src="img/three2.avif" alt="Presidential Suite" loading="lazy" decoding="async">
+                            <span class="room-badge"><i class="fa-solid fa-crown me-1"></i> VIP Sanctuary</span>
+                        </div>
+                        <div class="p-4">
+                            <span class="scarcity-pill"><i class="fa-solid fa-gem me-1"></i> Pinnacle Luxury</span>
+                            <h4 class="room-title fs-5">Presidential Suite</h4>
+                            <p class="room-desc small">Panoramic coastal views, private jacuzzi, butler service, & in-suite chef dining.</p>
+                            <div class="room-features mb-3">
+                                <span class="feature-tag"><i class="fa-solid fa-water-ladder"></i> Jacuzzi</span>
+                                <span class="feature-tag"><i class="fa-solid fa-user-tie"></i> Butler</span>
+                                <span class="feature-tag"><i class="fa-solid fa-shield-halved"></i> Private Lift</span>
+                            </div>
+                            <div class="d-flex align-items-center justify-content-between">
+                                <div>
+                                    <div><span class="price-strike">₹18,999</span><span class="room-price-val fs-5">₹14,999</span></div>
+                                    <div class="room-price-period x-small">per night + taxes</div>
+                                </div>
+                                <button class="btn btn-book-stay py-2 px-3 btn-sm" data-bs-toggle="modal" data-bs-target="#bookingModal">BOOK NOW</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="text-center mt-3">
+                <a href="rooms.html" class="fw-bold text-gold">VIEW FULL ROOM INVENTORY & COMPARISON MATRIX <i class="fa-solid fa-arrow-right ms-1"></i></a>
+            </div>
+        </div>
+    </section>
+
+    <!-- OVERHAULED REVIEWS SECTION WITH POPULATED TABS -->
+    <section class="testimonials-section" id="reviews">
+        <div class="container">
+            <div class="section-title-wrap">
+                <span class="section-subtitle">TRANSPARENT GUEST FEEDBACK</span>
+                <h2 class="section-title">Verified Guest Reviews & Ratings</h2>
+                <p class="section-desc">Synthesized directly from 3,034+ real Google & TripAdvisor guest experiences for HOTEL Vivana & The Rasa Kitchen.</p>
+            </div>
+
+            <!-- Summary Dashboard -->
+            <div class="reviews-summary-dashboard">
+                <div class="row align-items-center">
+                    <div class="col-lg-4">
+                        <div class="overall-score-box">
+                            <div class="overall-score-val">4.2</div>
+                            <div class="review-stars-gold">
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star-half-stroke"></i>
+                            </div>
+                            <h5 class="fw-bold text-dark mb-0">Out of 5 Stars</h5>
+                            <p class="text-muted small mb-0">Based on 3,034 Google & TripAdvisor Reviews</p>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-5">
+                        <div class="rating-bar-row">
+                            <span class="fw-bold">5 Stars</span>
+                            <div class="rating-bar-bg"><div class="rating-bar-fill" style="width: 68%;"></div></div>
+                            <span class="text-muted">68%</span>
+                        </div>
+                        <div class="rating-bar-row">
+                            <span class="fw-bold">4 Stars</span>
+                            <div class="rating-bar-bg"><div class="rating-bar-fill" style="width: 18%;"></div></div>
+                            <span class="text-muted">18%</span>
+                        </div>
+                        <div class="rating-bar-row">
+                            <span class="fw-bold">3 Stars</span>
+                            <div class="rating-bar-bg"><div class="rating-bar-fill" style="width: 7%;"></div></div>
+                            <span class="text-muted">7%</span>
+                        </div>
+                        <div class="rating-bar-row">
+                            <span class="fw-bold">2 Stars</span>
+                            <div class="rating-bar-bg"><div class="rating-bar-fill" style="width: 4%;"></div></div>
+                            <span class="text-muted">4%</span>
+                        </div>
+                        <div class="rating-bar-row">
+                            <span class="fw-bold">1 Star</span>
+                            <div class="rating-bar-bg"><div class="rating-bar-fill" style="width: 3%;"></div></div>
+                            <span class="text-muted">3%</span>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-3 text-center text-lg-start">
+                        <div class="staff-spotlight-pill">
+                            <i class="fa-solid fa-heart text-danger me-1"></i> <strong>Staff Recognition:</strong>
+                            <div class="small text-muted mt-1">Special thanks to <strong>Mr. Murali, Shanmukh, Sai & Sugunakar</strong> for exceptional guest care highlighted in reviews!</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Review Filter Tabs -->
+            <ul class="nav nav-pills review-filter-tabs justify-content-center mb-4" id="reviewFilterTab" role="tablist">
+                <li class="nav-item"><button class="nav-link active" data-bs-toggle="pill" data-bs-target="#rev-all">ALL REVIEWS (3,034)</button></li>
+                <li class="nav-item"><button class="nav-link" data-bs-toggle="pill" data-bs-target="#rev-food">MUTTON PULAO & DINING</button></li>
+                <li class="nav-item"><button class="nav-link" data-bs-toggle="pill" data-bs-target="#rev-staff">STAFF HOSPITALITY</button></li>
+                <li class="nav-item"><button class="nav-link" data-bs-toggle="pill" data-bs-target="#rev-room">ROOM COMFORT</button></li>
+            </ul>
+
+            <!-- POPULATED REVIEWS TAB CONTENT GRID -->
+            <div class="tab-content" id="reviewTabContent">
+                <!-- ALL REVIEWS -->
+                <div class="tab-pane fade show active" id="rev-all" role="tabpanel">
+                    <div class="row g-4">
+                        <div class="col-lg-4 col-md-6">
+                            <div class="luxury-review-card">
+                                <div class="d-flex align-items-center gap-3 mb-3">
+                                    <div class="reviewer-avatar">SL</div>
+                                    <div>
+                                        <h6 class="fw-bold text-dark mb-0">satya lalitha</h6>
+                                        <div class="small text-muted"><i class="fa-brands fa-google text-primary me-1"></i> Local Guide · 26 reviews</div>
+                                    </div>
+                                    <div class="ms-auto text-warning"><i class="fa-solid fa-star"></i> 4/5</div>
+                                </div>
+                                <p class="small text-dark mb-2">"Hotel Vivana is one of those places where patience pays off. We ordered the mutton pulao, and although the waiting time was around 30 minutes, it was absolutely worth it!"</p>
+                                <div class="owner-response-box">
+                                    <strong>Response from Owner:</strong> Thank you Satya! We slow-cook our signature Mutton Pulao fresh to order to maintain authentic flavor.
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-4 col-md-6">
+                            <div class="luxury-review-card">
+                                <div class="d-flex align-items-center gap-3 mb-3">
+                                    <div class="reviewer-avatar">SP</div>
+                                    <div>
+                                        <h6 class="fw-bold text-dark mb-0">Sreedharudu Pasam</h6>
+                                        <div class="small text-muted"><i class="fa-brands fa-google text-primary me-1"></i> Local Guide · 30 reviews</div>
+                                    </div>
+                                    <div class="ms-auto text-warning"><i class="fa-solid fa-star"></i> 5/5</div>
+                                </div>
+                                <p class="small text-dark mb-2">"The food here is so delicious, especially the mutton pulao and the natu kodi pulusu ragi sangati. The starters are also amazing, with loose prawns and fish tikka being standouts!"</p>
+                                <div class="owner-response-box">
+                                    <strong>Response from Owner:</strong> Delighted to hear you loved our coastal Andhra specialties Sreedharudu!
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-4 col-md-6">
+                            <div class="luxury-review-card">
+                                <div class="d-flex align-items-center gap-3 mb-3">
+                                    <div class="reviewer-avatar">SB</div>
+                                    <div>
+                                        <h6 class="fw-bold text-dark mb-0">Sunit Kumar Biswal</h6>
+                                        <div class="small text-muted"><i class="fa-brands fa-google text-primary me-1"></i> Verified Stay</div>
+                                    </div>
+                                    <div class="ms-auto text-warning"><i class="fa-solid fa-star"></i> 5/5</div>
+                                </div>
+                                <p class="small text-dark mb-2">"Very nice staffs, special mention to Murali Sir, awesome service from their end. Rooms 5/5, hospitality top-notch!"</p>
+                                <div class="owner-response-box">
+                                    <strong>Response from Owner:</strong> Thank you Sunit! We have shared your special appreciation with Mr. Murali and our team.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- MUTTON PULAO & DINING -->
+                <div class="tab-pane fade" id="rev-food" role="tabpanel">
+                    <div class="row g-4">
+                        <div class="col-lg-4 col-md-6">
+                            <div class="luxury-review-card">
+                                <div class="d-flex align-items-center gap-3 mb-3">
+                                    <div class="reviewer-avatar">SY</div>
+                                    <div>
+                                        <h6 class="fw-bold text-dark mb-0">SWARUP BIRRA</h6>
+                                        <div class="small text-muted"><i class="fa-brands fa-google text-primary me-1"></i> Local Guide · 124 reviews</div>
+                                    </div>
+                                    <div class="ms-auto text-warning"><i class="fa-solid fa-star"></i> 5/5</div>
+                                </div>
+                                <p class="small text-dark mb-2">"Their Pandu Mirchi Kodi Biryani is 🔥🔥🔥💯💯 — a must try when visiting."</p>
+                            </div>
+                        </div>
+                        <div class="col-lg-4 col-md-6">
+                            <div class="luxury-review-card">
+                                <div class="d-flex align-items-center gap-3 mb-3">
+                                    <div class="reviewer-avatar">DVC</div>
+                                    <div>
+                                        <h6 class="fw-bold text-dark mb-0">Dr Vaibhav Chapara</h6>
+                                        <div class="small text-muted"><i class="fa-brands fa-google text-primary me-1"></i> Local Guide · 319 reviews</div>
+                                    </div>
+                                    <div class="ms-auto text-warning"><i class="fa-solid fa-star"></i> 5/5</div>
+                                </div>
+                                <p class="small text-dark mb-2">"The chef and management take so much care in giving the best possible service. The Mutton Pulao is a must try."</p>
+                            </div>
+                        </div>
+                        <div class="col-lg-4 col-md-6">
+                            <div class="luxury-review-card">
+                                <div class="d-flex align-items-center gap-3 mb-3">
+                                    <div class="reviewer-avatar">CK</div>
+                                    <div>
+                                        <h6 class="fw-bold text-dark mb-0">chandra kiran reddy</h6>
+                                        <div class="small text-muted"><i class="fa-brands fa-google text-primary me-1"></i> Local Guide · 4 reviews</div>
+                                    </div>
+                                    <div class="ms-auto text-warning"><i class="fa-solid fa-star"></i> 5/5</div>
+                                </div>
+                                <p class="small text-dark mb-2">"Had their signature dish mutton pulav and loved it 😍 — exactly as good as everyone says."</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- STAFF HOSPITALITY -->
+                <div class="tab-pane fade" id="rev-staff" role="tabpanel">
+                    <div class="row g-4">
+                        <div class="col-lg-4 col-md-6">
+                            <div class="luxury-review-card">
+                                <div class="d-flex align-items-center gap-3 mb-3">
+                                    <div class="reviewer-avatar">PG</div>
+                                    <div>
+                                        <h6 class="fw-bold text-dark mb-0">Pulkit Gupta</h6>
+                                        <div class="small text-muted"><i class="fa-brands fa-google text-primary me-1"></i> Verified Stay</div>
+                                    </div>
+                                    <div class="ms-auto text-warning"><i class="fa-solid fa-star"></i> 5/5</div>
+                                </div>
+                                <p class="small text-dark mb-2">"The staff was extremely friendly and accommodating — special thanks to Mr. Murali for going out of his way to fulfill our requests."</p>
+                            </div>
+                        </div>
+                        <div class="col-lg-4 col-md-6">
+                            <div class="luxury-review-card">
+                                <div class="d-flex align-items-center gap-3 mb-3">
+                                    <div class="reviewer-avatar">VS</div>
+                                    <div>
+                                        <h6 class="fw-bold text-dark mb-0">Venkateswarlu Sreeram</h6>
+                                        <div class="small text-muted"><i class="fa-brands fa-google text-primary me-1"></i> 12 reviews</div>
+                                    </div>
+                                    <div class="ms-auto text-warning"><i class="fa-solid fa-star"></i> 5/5</div>
+                                </div>
+                                <p class="small text-dark mb-2">"The guy at front desk was very polite and responsible. Spacious and comfortable room, food was good — overall a great stay."</p>
+                            </div>
+                        </div>
+                        <div class="col-lg-4 col-md-6">
+                            <div class="luxury-review-card">
+                                <div class="d-flex align-items-center gap-3 mb-3">
+                                    <div class="reviewer-avatar">MJ</div>
+                                    <div>
+                                        <h6 class="fw-bold text-dark mb-0">Mark Jino</h6>
+                                        <div class="small text-muted"><i class="fa-brands fa-google text-primary me-1"></i> 3 reviews</div>
+                                    </div>
+                                    <div class="ms-auto text-warning"><i class="fa-solid fa-star"></i> 5/5</div>
+                                </div>
+                                <p class="small text-dark mb-2">"Liked the overall behaviour of all staff. Would like to name Murali, Shanmukh, and Sai specifically."</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ROOM COMFORT -->
+                <div class="tab-pane fade" id="rev-room" role="tabpanel">
+                    <div class="row g-4">
+                        <div class="col-lg-4 col-md-6">
+                            <div class="luxury-review-card">
+                                <div class="d-flex align-items-center gap-3 mb-3">
+                                    <div class="reviewer-avatar">DS</div>
+                                    <div>
+                                        <h6 class="fw-bold text-dark mb-0">Dinesh CH</h6>
+                                        <div class="small text-muted"><i class="fa-brands fa-google text-primary me-1"></i> 27 reviews</div>
+                                    </div>
+                                    <div class="ms-auto text-warning"><i class="fa-solid fa-star"></i> 5/5</div>
+                                </div>
+                                <p class="small text-dark mb-2">"Loved the atmosphere. Room is spacious. Service is good. Worth staying."</p>
+                            </div>
+                        </div>
+                        <div class="col-lg-4 col-md-6">
+                            <div class="luxury-review-card">
+                                <div class="d-flex align-items-center gap-3 mb-3">
+                                    <div class="reviewer-avatar">RA</div>
+                                    <div>
+                                        <h6 class="fw-bold text-dark mb-0">Raviteja Andhavarapu</h6>
+                                        <div class="small text-muted"><i class="fa-brands fa-google text-primary me-1"></i> Local Guide · 119 reviews</div>
+                                    </div>
+                                    <div class="ms-auto text-warning"><i class="fa-solid fa-star"></i> 4/5</div>
+                                </div>
+                                <p class="small text-dark mb-2">"Loved the interiors. The room was clean and simple with a nice bed and squeaky clean bathroom."</p>
+                            </div>
+                        </div>
+                        <div class="col-lg-4 col-md-6">
+                            <div class="luxury-review-card">
+                                <div class="d-flex align-items-center gap-3 mb-3">
+                                    <div class="reviewer-avatar">GK</div>
+                                    <div>
+                                        <h6 class="fw-bold text-dark mb-0">Gaurav Katruwar</h6>
+                                        <div class="small text-muted"><i class="fa-brands fa-google text-primary me-1"></i> Local Guide · 8 reviews</div>
+                                    </div>
+                                    <div class="ms-auto text-warning"><i class="fa-solid fa-star"></i> 4/5</div>
+                                </div>
+                                <p class="small text-dark mb-2">"Very clean & well maintained hotel rooms. Service is top-notch."</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER WITH ACCESSIBILITY NOTE & LEGAL LINKS -->
+    <footer class="site-footer">
+        <div class="container">
+            <div class="row g-4 mb-5">
+                <div class="col-lg-4">
+                    <div class="footer-brand">VIVANA <span>HOTEL</span></div>
+                    <p class="small text-light opacity-75 mb-4">
+                        Siripuram's premier boutique luxury hotel offering elevated comfort, warm Andhra hospitality, & fine dining just moments from Ramakrishna Beach.
+                    </p>
+                    <div class="d-flex gap-3">
+                        <a href="#" class="text-light fs-5"><i class="fa-brands fa-facebook"></i></a>
+                        <a href="#" class="text-light fs-5"><i class="fa-brands fa-instagram"></i></a>
+                        <a href="https://wa.me/918912705000" class="text-light fs-5"><i class="fa-brands fa-whatsapp"></i></a>
+                        <a href="#" class="text-light fs-5"><i class="fa-brands fa-tripadvisor"></i></a>
+                    </div>
+                </div>
+
+                <div class="col-lg-2 col-6">
+                    <h5 class="footer-heading">Quick Links</h5>
+                    <ul class="footer-links">
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="rooms.html">Rooms & Suites</a></li>
+                        <li><a href="dining.html">The Rasa Kitchen</a></li>
+                        <li><a href="offers.html">Special Offers</a></li>
+                        <li><a href="events.html">Weddings & Banquets</a></li>
+                    </ul>
+                </div>
+
+                <div class="col-lg-2 col-6">
+                    <h5 class="footer-heading">Legal & Info</h5>
+                    <ul class="footer-links">
+                        <li><a href="terms.html">Terms of Service</a></li>
+                        <li><a href="cancellation.html">Cancellation Policy</a></li>
+                        <li><a href="contact.html">Contact & Map</a></li>
+                    </ul>
+                </div>
+
+                <div class="col-lg-4">
+                    <h5 class="footer-heading">Newsletter Subscription</h5>
+                    <p class="small text-light opacity-75">Subscribe to receive exclusive direct booking discount vouchers and seasonal getaway offers.</p>
+                    <div class="newsletter-box">
+                        <input type="email" class="form-control" placeholder="Enter your email address">
+                        <button class="btn btn-subscribe" type="button">SUBSCRIBE</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="text-center py-2 text-muted small border-top border-secondary">
+                <i class="fa-solid fa-universal-access me-1 text-gold"></i> HOTEL Vivana is committed to accessibility — wheelchair-accessible rooms and facilities are available on request.
+            </div>
+
+            <div class="footer-bottom text-center">
+                <p class="mb-1">© 2026 HOTEL Vivana. All Rights Reserved. Designed & Developed for Elevated Hospitality.</p>
+                <div class="d-flex justify-content-center gap-3 small">
+                    <a href="terms.html">Privacy Policy</a> | 
+                    <a href="terms.html">Terms of Service</a> | 
+                    <a href="cancellation.html">Cancellation Policy</a> | 
+                    <a href="about.html">Best Rate Guarantee FAQ</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- MOBILE STICKY BOOKING BAR -->
+    <div class="mobile-sticky-booking d-flex d-md-none">
+        <div>
+            <span class="x-small text-muted d-block">Starting from</span>
+            <span class="fw-bold text-gold fs-5">₹3,499<small class="x-small text-muted">/night</small></span>
+        </div>
+        <button class="btn btn-book-stay py-2 px-4" data-bs-toggle="modal" data-bs-target="#bookingModal">BOOK NOW</button>
+    </div>
+
+    <!-- FLOATING WHATSAPP BUTTON -->
+    <a href="https://wa.me/918912705000?text=Hello%20HOTEL%20Vivana,%20I%20would%20like%20to%20inquire%20about%20room%20availability." target="_blank" class="floating-whatsapp" title="Chat on WhatsApp">
+        <i class="fa-brands fa-whatsapp"></i>
+    </a>
+
+    <!-- FLOATING LIVE CHAT / AI CHATBOT WIDGET -->
+    <div class="floating-chatbot d-none d-sm-flex" onclick="alert('Opening Vivana AI Concierge Chatbot... Ask us about rooms, mutton pulao, or RK beach distances!')" title="Need help? Chat with us">
+        <i class="fa-solid fa-comments"></i>
+    </div>
+
+    <!-- GENERAL BOOKING MODAL WITH MULTI-STEP FUNNEL -->
+    <div class="modal fade" id="bookingModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title fw-bold text-dark">RESERVE YOUR STAY AT VIVANA</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body p-4">
+                    <form class="row g-3">
+                        <div class="col-md-6">
+                            <label class="form-label small fw-bold">Check-In</label>
+                            <input type="date" class="form-control checkin-date">
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label small fw-bold">Check-Out</label>
+                            <input type="date" class="form-control checkout-date">
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label small fw-bold">Select Room Type</label>
+                            <select class="form-select">
+                                <option>Deluxe Room (₹3,499/night)</option>
+                                <option>Premium Room (₹4,999/night)</option>
+                                <option>Executive Suite (₹7,499/night)</option>
+                                <option>Family Suite (₹9,999/night)</option>
+                                <option>Presidential Suite (₹14,999/night)</option>
+                            </select>
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label small fw-bold">Optional Add-On</label>
+                            <select class="form-select">
+                                <option>None</option>
+                                <option>Airport Shuttle Pickup (+₹600)</option>
+                                <option>Early Check-in at 9:00 AM (+₹800)</option>
+                                <option>Rasa Dinner Package (+₹999/person)</option>
+                            </select>
+                        </div>
+                        <div class="col-12">
+                            <button type="button" class="btn btn-book-stay w-100 py-3 mt-2" onclick="validateBookingForm(this)">
+                                CONFIRM RESERVATION
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="js/bootstrap.bundle.js"></script>
+    <script>
+        // Sticky Navbar Effect
+        window.addEventListener('scroll', function () {
+            const navbar = document.getElementById('mainNavbar');
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
+        // Left and Right Arrow Scroll Function for Rooms Slider
+        function scrollContainer(containerId, amount) {
+            const container = document.getElementById(containerId);
+            container.scrollBy({ left: amount, behavior: 'smooth' });
+        }
+
+        // Dynamic Date Auto-Filler & Min Date Enforcement
+        document.addEventListener('DOMContentLoaded', function () {
+            const today = new Date();
+            const tomorrow = new Date();
+            tomorrow.setDate(today.getDate() + 1);
+
+            const formatDate = (d) => d.toISOString().split('T')[0];
+
+            const checkInInputs = document.querySelectorAll('.checkin-date');
+            const checkOutInputs = document.querySelectorAll('.checkout-date');
+
+            checkInInputs.forEach((input) => {
+                input.value = formatDate(today);
+                input.min = formatDate(today);
+            });
+
+            checkOutInputs.forEach((input) => {
+                input.value = formatDate(tomorrow);
+                input.min = formatDate(tomorrow);
+            });
+        });
+
+        // Date Validation before submission
+        function validateBookingForm(button) {
+            const modalBody = button.closest('.modal-body') || button.closest('form');
+            const checkInInput = modalBody.querySelector('.checkin-date');
+            const checkOutInput = modalBody.querySelector('.checkout-date');
+
+            if (checkInInput && checkOutInput) {
+                const checkIn = new Date(checkInInput.value);
+                const checkOut = new Date(checkOutInput.value);
+
+                if (checkOut <= checkIn) {
+                    alert('Check-out date must be after check-in date. Please adjust your dates.');
+                    return false;
+                }
+            }
+            alert('Thank you for reserving with HOTEL Vivana! Our reservation desk will call you shortly to confirm your booking details.');
+            return true;
+        }
+    </script>
+</body>
+
+</html>

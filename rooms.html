@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rooms & Suites Inventory | HOTEL Vivana Siripuram, Visakhapatnam</title>
+    <meta name="description" content="Explore luxury rooms and suites at HOTEL Vivana Siripuram Visakhapatnam. Deluxe, Premium, Executive, Family, & Presidential Suites. Book direct for best rate.">
+    <link rel="icon" href="img/ficon.png">
+    
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="css/bootstrap.css">
+    <!-- Custom Style CSS -->
+    <link rel="stylesheet" href="css/style.css">
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Schema.org Structured Data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Hotel",
+      "name": "HOTEL Vivana",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Circle, Vivana Rd, opp. W N S, Siripuram",
+        "addressLocality": "Visakhapatnam",
+        "addressRegion": "Andhra Pradesh",
+        "postalCode": "530003",
+        "addressCountry": "IN"
+      },
+      "aggregateRating": {
+        "@type": "AggregateRating",
+        "ratingValue": "4.2",
+        "reviewCount": "3034"
+      }
+    }
+    </script>
+</head>
+
+<body>
+
+    <!-- TOP MINI ANNOUNCEMENT BAR -->
+    <div class="top-announcement-bar d-none d-md-block">
+        <div class="container-fluid px-lg-5">
+            <div class="d-flex justify-content-between align-items-center">
+                <div>
+                    <span class="me-3"><i class="fa-solid fa-gift text-gold me-1"></i> Direct Booking Special: Use code <strong>VIVANA10</strong> for 10% OFF</span>
+                    <span><i class="fa-solid fa-phone me-1 text-gold"></i> Reservations: +91 891 270 5000</span>
+                </div>
+                <div class="d-flex align-items-center gap-3">
+                    <span class="small"><i class="fa-solid fa-globe me-1 text-gold"></i> Language: English</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- NAVIGATION BAR -->
+    <nav class="navbar navbar-expand-lg custom-nav inner-page-nav" id="mainNavbar">
+        <div class="container-fluid px-lg-5">
+            <a class="navbar-brand d-flex align-items-center" href="index.html">
+                <span class="nav-brand-text">VIVANA <span>HOTEL</span></span>
+            </a>
+            
+            <button class="navbar-toggler border-0 text-dark" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarContent" aria-controls="navbarContent" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <i class="fa-solid fa-bars fs-4"></i>
+            </button>
+
+            <div class="collapse navbar-collapse justify-content-end" id="navbarContent">
+                <ul class="navbar-nav align-items-center me-lg-4 mb-3 mb-lg-0">
+                    <li class="nav-item"><a class="nav-link" href="index.html">HOME</a></li>
+                    <li class="nav-item"><a class="nav-link active text-gold" href="rooms.html">ROOMS</a></li>
+                    <li class="nav-item"><a class="nav-link" href="dining.html">DINING</a></li>
+                    <li class="nav-item"><a class="nav-link" href="events.html">EVENTS & WEDDINGS</a></li>
+                    <li class="nav-item"><a class="nav-link" href="index.html#reviews">REVIEWS</a></li>
+                    <li class="nav-item"><a class="nav-link" href="about.html">ABOUT US</a></li>
+                    <li class="nav-item"><a class="nav-link" href="contact.html">CONTACT</a></li>
+                </ul>
+
+                <button class="btn btn-book-stay" data-bs-toggle="modal" data-bs-target="#bookingModal">
+                    BOOK A STAY
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- PAGE HEADER BANNER -->
+    <header class="page-header-banner">
+        <div class="container">
+            <span class="section-subtitle">ACCOMMODATIONS INVENTORIES</span>
+            <h1 class="page-header-title">Luxurious Rooms & Suites</h1>
+            <p class="page-header-subtitle">"Where Modern Sophistication Meets Coastal Comfort"</p>
+        </div>
+    </header>
+
+    <!-- ROOMS CAROUSEL WITH EXPLICIT LEFT & RIGHT ARROW BUTTONS -->
+    <section class="rooms-section">
+        <div class="container">
+            <div class="d-flex align-items-center justify-content-between mb-4">
+                <div>
+                    <h2 class="h3 fw-bold text-dark mb-0">Browse All Room Categories</h2>
+                    <p class="text-muted small mb-0">Click left and right arrows to explore room inventory</p>
+                </div>
+                <div class="d-flex gap-2">
+                    <button class="slider-arrow-btn arrow-prev" onclick="scrollRoomsContainer(-360)" title="Previous Rooms">
+                        <i class="fa-solid fa-chevron-left"></i>
+                    </button>
+                    <button class="slider-arrow-btn arrow-next" onclick="scrollRoomsContainer(360)" title="Next Rooms">
+                        <i class="fa-solid fa-chevron-right"></i>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Horizontal Scroll Container -->
+            <div class="horizontal-scroll-container" id="roomsScrollContainer">
+                <!-- Deluxe Room -->
+                <div>
+                    <div class="room-canvas-wrapper">
+                        <div class="room-canvas-img-box">
+                            <img src="img/lr1.avif" alt="Deluxe Room">
+                            <span class="room-badge"><i class="fa-solid fa-tag me-1"></i> Free Cancellation</span>
+                        </div>
+                        <div class="p-4">
+                            <span class="scarcity-pill"><i class="fa-solid fa-fire me-1"></i> Only 3 left for selected dates</span>
+                            <h4 class="room-title fs-5">Deluxe Room</h4>
+                            <p class="room-desc small">Sophisticated comfort featuring king-size bedding, smart TV, tea/coffee station, & city views.</p>
+                            <div class="room-features mb-3">
+                                <span class="feature-tag"><i class="fa-solid fa-wifi"></i> Free WiFi</span>
+                                <span class="feature-tag"><i class="fa-solid fa-snowflake"></i> AC</span>
+                                <span class="feature-tag"><i class="fa-solid fa-tv"></i> Smart TV</span>
+                            </div>
+                            <div class="d-flex align-items-center justify-content-between">
+                                <div>
+                                    <div><span class="price-strike">₹4,499</span><span class="room-price-val fs-5">₹3,499</span></div>
+                                    <div class="room-price-period x-small">per night + taxes</div>
+                                </div>
+                                <button class="btn btn-book-stay py-2 px-3 btn-sm" data-bs-toggle="modal" data-bs-target="#bookingModal">BOOK NOW</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Premium Room -->
+                <div>
+                    <div class="room-canvas-wrapper">
+                        <div class="room-canvas-img-box">
+                            <img src="img/lr2.avif" alt="Premium Room">
+                            <span class="room-badge"><i class="fa-solid fa-tag me-1"></i> Free Cancellation</span>
+                        </div>
+                        <div class="p-4">
+                            <span class="scarcity-pill"><i class="fa-solid fa-fire me-1"></i> High Demand</span>
+                            <h4 class="room-title fs-5">Premium Room</h4>
+                            <p class="room-desc small">Spacious luxury with pool-view balcony, work desk, mini bar, and rain shower bath.</p>
+                            <div class="room-features mb-3">
+                                <span class="feature-tag"><i class="fa-solid fa-wifi"></i> WiFi</span>
+                                <span class="feature-tag"><i class="fa-solid fa-wine-glass"></i> Mini Bar</span>
+                                <span class="feature-tag"><i class="fa-solid fa-shower"></i> Rain Shower</span>
+                            </div>
+                            <div class="d-flex align-items-center justify-content-between">
+                                <div>
+                                    <div><span class="price-strike">₹6,299</span><span class="room-price-val fs-5">₹4,999</span></div>
+                                    <div class="room-price-period x-small">per night + taxes</div>
+                                </div>
+                                <button class="btn btn-book-stay py-2 px-3 btn-sm" data-bs-toggle="modal" data-bs-target="#bookingModal">BOOK NOW</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Executive Suite -->
+                <div>
+                    <div class="room-canvas-wrapper">
+                        <div class="room-canvas-img-box">
+                            <img src="img/lr3.avif" alt="Executive Suite">
+                            <span class="room-badge"><i class="fa-solid fa-tag me-1"></i> Free Cancellation</span>
+                        </div>
+                        <div class="p-4">
+                            <span class="scarcity-pill"><i class="fa-solid fa-fire me-1"></i> Only 2 Suites left</span>
+                            <h4 class="room-title fs-5">Executive Suite</h4>
+                            <p class="room-desc small">Palatial suite featuring a separate living room, dining area, & premium executive benefits.</p>
+                            <div class="room-features mb-3">
+                                <span class="feature-tag"><i class="fa-solid fa-couch"></i> Living Lounge</span>
+                                <span class="feature-tag"><i class="fa-solid fa-bath"></i> Deep Tub</span>
+                                <span class="feature-tag"><i class="fa-solid fa-crown"></i> VIP Perks</span>
+                            </div>
+                            <div class="d-flex align-items-center justify-content-between">
+                                <div>
+                                    <div><span class="price-strike">₹9,499</span><span class="room-price-val fs-5">₹7,499</span></div>
+                                    <div class="room-price-period x-small">per night + taxes</div>
+                                </div>
+                                <button class="btn btn-book-stay py-2 px-3 btn-sm" data-bs-toggle="modal" data-bs-target="#bookingModal">BOOK NOW</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Family Suite -->
+                <div>
+                    <div class="room-canvas-wrapper">
+                        <div class="room-canvas-img-box">
+                            <img src="img/lr4.avif" alt="Family Suite">
+                            <span class="room-badge"><i class="fa-solid fa-tag me-1"></i> Free Cancellation</span>
+                        </div>
+                        <div class="p-4">
+                            <span class="scarcity-pill"><i class="fa-solid fa-users me-1"></i> Ideal for 4+ Guests</span>
+                            <h4 class="room-title fs-5">Family Suite</h4>
+                            <p class="room-desc small">Generous two-bedroom suite crafted for families with kitchenette & 24/7 butler service.</p>
+                            <div class="room-features mb-3">
+                                <span class="feature-tag"><i class="fa-solid fa-bed"></i> 2 Bedrooms</span>
+                                <span class="feature-tag"><i class="fa-solid fa-kitchen-set"></i> Kitchenette</span>
+                                <span class="feature-tag"><i class="fa-solid fa-bell"></i> Butler</span>
+                            </div>
+                            <div class="d-flex align-items-center justify-content-between">
+                                <div>
+                                    <div><span class="price-strike">₹12,999</span><span class="room-price-val fs-5">₹9,999</span></div>
+                                    <div class="room-price-period x-small">per night + taxes</div>
+                                </div>
+                                <button class="btn btn-book-stay py-2 px-3 btn-sm" data-bs-toggle="modal" data-bs-target="#bookingModal">BOOK NOW</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Presidential Suite -->
+                <div>
+                    <div class="room-canvas-wrapper">
+                        <div class="room-canvas-img-box">
+                            <img src="img/three2.avif" alt="Presidential Suite">
+                            <span class="room-badge"><i class="fa-solid fa-crown me-1"></i> VIP Sanctuary</span>
+                        </div>
+                        <div class="p-4">
+                            <span class="scarcity-pill"><i class="fa-solid fa-gem me-1"></i> Pinnacle Luxury</span>
+                            <h4 class="room-title fs-5">Presidential Suite</h4>
+                            <p class="room-desc small">Our most prestigious accommodation featuring panoramic city views, master jacuzzi, and private chef dining.</p>
+                            <div class="room-features mb-3">
+                                <span class="feature-tag"><i class="fa-solid fa-water-ladder"></i> Jacuzzi</span>
+                                <span class="feature-tag"><i class="fa-solid fa-user-tie"></i> Butler</span>
+                                <span class="feature-tag"><i class="fa-solid fa-shield-halved"></i> Private Lift</span>
+                            </div>
+                            <div class="d-flex align-items-center justify-content-between">
+                                <div>
+                                    <div><span class="price-strike">₹18,999</span><span class="room-price-val fs-5">₹14,999</span></div>
+                                    <div class="room-price-period x-small">per night + taxes</div>
+                                </div>
+                                <button class="btn btn-book-stay py-2 px-3 btn-sm" data-bs-toggle="modal" data-bs-target="#bookingModal">BOOK NOW</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SIDE-BY-SIDE ROOM COMPARISON TABLE -->
+    <section class="amenities-section">
+        <div class="container">
+            <div class="section-title-wrap">
+                <span class="section-subtitle">SIDE-BY-SIDE COMPARISON</span>
+                <h2 class="section-title">Room Comparison Matrix</h2>
+                <p class="section-desc">Compare room sizes, bed configurations, view types, and complimentary privileges.</p>
+            </div>
+
+            <div class="table-responsive comparison-table-wrap">
+                <table class="table comparison-table mb-0">
+                    <thead>
+                        <tr>
+                            <th>Feature</th>
+                            <th>Deluxe Room</th>
+                            <th>Premium Room</th>
+                            <th>Executive Suite</th>
+                            <th>Family Suite</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Room Size</strong></td>
+                            <td>320 sq. ft.</td>
+                            <td>450 sq. ft.</td>
+                            <td>680 sq. ft.</td>
+                            <td>850 sq. ft.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Bedding</strong></td>
+                            <td>1 King / 2 Twin</td>
+                            <td>1 King Bed</td>
+                            <td>1 King + Lounge</td>
+                            <td>2 King Bedrooms</td>
+                        </tr>
+                        <tr>
+                            <td><strong>View</strong></td>
+                            <td>Siripuram City View</td>
+                            <td>Pool & Garden View</td>
+                            <td>Panoramic Coastal View</td>
+                            <td>City & Pool View</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Breakfast</strong></td>
+                            <td>Included (Direct)</td>
+                            <td>Included (Direct)</td>
+                            <td>Complimentary Buffet</td>
+                            <td>In-Suite & Buffet</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Airport Shuttle</strong></td>
+                            <td>On Request</td>
+                            <td>On Request</td>
+                            <td>Complimentary Pickup</td>
+                            <td>Complimentary Return</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Member Price</strong></td>
+                            <td><strong class="text-gold">₹3,499/night</strong></td>
+                            <td><strong class="text-gold">₹4,999/night</strong></td>
+                            <td><strong class="text-gold">₹7,499/night</strong></td>
+                            <td><strong class="text-gold">₹9,999/night</strong></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="site-footer">
+        <div class="container text-center">
+            <p>© 2026 HOTEL Vivana. All Rights Reserved. <a href="index.html" class="text-gold">Return to Main Homepage</a></p>
+        </div>
+    </footer>
+
+    <!-- GENERAL BOOKING MODAL WITH MULTI-STEP FUNNEL -->
+    <div class="modal fade" id="bookingModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title fw-bold text-dark">RESERVE YOUR STAY — STEP-BY-STEP FUNNEL</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body p-4">
+                    <!-- Step Progress Bar -->
+                    <div class="step-wizard">
+                        <span class="step-item active"><i class="fa-solid fa-circle-check"></i> 1. Dates</span>
+                        <span class="step-item active"><i class="fa-solid fa-bed"></i> 2. Room</span>
+                        <span class="step-item"><i class="fa-solid fa-plus"></i> 3. Add-Ons</span>
+                        <span class="step-item"><i class="fa-solid fa-credit-card"></i> 4. Confirm</span>
+                    </div>
+
+                    <form class="row g-3">
+                        <div class="col-md-6">
+                            <label class="form-label small fw-bold">Check-In Date</label>
+                            <input type="date" class="form-control" value="2026-08-01">
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label small fw-bold">Check-Out Date</label>
+                            <input type="date" class="form-control" value="2026-08-03">
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label small fw-bold">Room Category</label>
+                            <select class="form-select">
+                                <option>Deluxe Room (₹3,499/night)</option>
+                                <option>Premium Room (₹4,999/night)</option>
+                                <option>Executive Suite (₹7,499/night)</option>
+                                <option>Family Suite (₹9,999/night)</option>
+                                <option>Presidential Suite (₹14,999/night)</option>
+                            </select>
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label small fw-bold">Select Add-Ons (Optional)</label>
+                            <select class="form-select">
+                                <option>None</option>
+                                <option>Airport Shuttle Pickup (+₹600)</option>
+                                <option>Early Check-in at 9:00 AM (+₹800)</option>
+                                <option>Rasa Dinner Buffet Package (+₹999/person)</option>
+                            </select>
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label small fw-bold">Full Name</label>
+                            <input type="text" class="form-control" placeholder="Enter Full Name">
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label small fw-bold">Phone Number</label>
+                            <input type="tel" class="form-control" placeholder="Enter Mobile Number">
+                        </div>
+                        <div class="col-12">
+                            <button type="button" class="btn btn-book-stay w-100 py-3 mt-2" onclick="alert('Booking Request Submitted! Our reservation desk will call you to confirm payment & deposit details.')">
+                                PROCEED TO STEP 3: CONFIRM RESERVATION
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="js/bootstrap.bundle.js"></script>
+    <script>
+        function scrollRoomsContainer(amount) {
+            const container = document.getElementById('roomsScrollContainer');
+            container.scrollBy({ left: amount, behavior: 'smooth' });
+        }
+    </script>
+</body>
+
+</html>
