@@ -1,64 +1,16 @@
 {
-  "version": 2,
   "cleanUrls": true,
-  "builds": [
-    {
-      "src": "server.js",
-      "use": "@vercel/node"
-    },
-    {
-      "src": "*.html",
-      "use": "@vercel/static"
-    }
-  ],
-  "routes": [
-    {
-      "src": "/admin",
-      "dest": "/admin.html"
-    },
-    {
-      "src": "/about",
-      "dest": "/about.html"
-    },
-    {
-      "src": "/rooms",
-      "dest": "/rooms.html"
-    },
-    {
-      "src": "/dining",
-      "dest": "/dining.html"
-    },
-    {
-      "src": "/events",
-      "dest": "/events.html"
-    },
-    {
-      "src": "/offers",
-      "dest": "/offers.html"
-    },
-    {
-      "src": "/contact",
-      "dest": "/contact.html"
-    },
-    {
-      "src": "/privacy",
-      "dest": "/privacy.html"
-    },
-    {
-      "src": "/terms",
-      "dest": "/terms.html"
-    },
-    {
-      "src": "/cancellation",
-      "dest": "/cancellation.html"
-    },
-    {
-      "src": "/api/(.*)",
-      "dest": "/server.js"
-    },
-    {
-      "src": "/(.*)",
-      "dest": "/$1"
-    }
+  "rewrites": [
+    { "source": "/admin", "destination": "/admin.html" },
+    { "source": "/about", "destination": "/about.html" },
+    { "source": "/rooms", "destination": "/rooms.html" },
+    { "source": "/dining", "destination": "/dining.html" },
+    { "source": "/events", "destination": "/events.html" },
+    { "source": "/offers", "destination": "/offers.html" },
+    { "source": "/contact", "destination": "/contact.html" },
+    { "source": "/privacy", "destination": "/privacy.html" },
+    { "source": "/terms", "destination": "/terms.html" },
+    { "source": "/cancellation", "destination": "/cancellation.html" },
+    { "source": "/api/:path*", "destination": "/server.js" }
   ]
 }
