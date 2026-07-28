@@ -709,4 +709,75 @@ a:hover {
         font-size: 12px;
         padding: 8px 12px;
     }
+
+    .merged-trust-item {
+        padding: 8px 0;
+    }
+}
+
+/* ==========================================================================
+   NEW CONSOLIDATED & TEASER COMPONENTS
+   ========================================================================== */
+.merged-trust-bar {
+    background: #FFFFFF;
+    border-top: 1px solid var(--border-gold);
+    border-bottom: 1px solid var(--border-gold);
+    padding: 22px 0;
+    box-shadow: 0 4px 20px rgba(197, 160, 89, 0.08);
+}
+
+.merged-trust-item {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 14px;
+}
+
+.merged-trust-icon {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background: var(--gold-subtle);
+    color: var(--gold-dark);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    flex-shrink: 0;
+}
+
+.merged-trust-val {
+    font-family: var(--font-heading);
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--charcoal-head);
+    line-height: 1.2;
+}
+
+.merged-trust-sub {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+}
+
+.btn-outline-gold {
+    background: transparent;
+    border: 2px solid var(--gold-primary);
+    color: var(--gold-dark) !important;
+    font-weight: 600;
+    font-size: 13px;
+    letter-spacing: 1px;
+    transition: all 0.3s ease;
+}
+
+.btn-outline-gold:hover {
+    background: var(--gold-primary);
+    color: #FFFFFF !important;
+    box-shadow: 0 4px 15px rgba(197, 160, 89, 0.3);
+}
+
+.dining-teaser-section {
+    padding: 80px 0;
+    background: var(--bg-alt);
+    border-top: 1px solid var(--border-color);
+    border-bottom: 1px solid var(--border-color);
 }

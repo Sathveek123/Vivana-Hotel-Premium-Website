@@ -1,0 +1,1139 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+    <title>Hotel Vivana | Luxury Back-Office & Administration</title>
+    <meta name="robots" content="noindex, nofollow">
+    <link rel="icon" href="img/ficon.png">
+    
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="css/bootstrap.css">
+    <!-- Custom Style CSS -->
+    <link rel="stylesheet" href="css/style.css">
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <style>
+        body {
+            background-color: #F8F6F0;
+        }
+
+        .admin-sidebar {
+            width: 260px;
+            background: #1C1917;
+            color: #A8A29E;
+            min-height: 100vh;
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 1000;
+            transition: all 0.3s ease;
+            border-right: 1px solid rgba(197, 160, 89, 0.3);
+        }
+
+        .admin-sidebar-brand {
+            padding: 24px 20px;
+            font-family: var(--font-heading);
+            font-size: 20px;
+            font-weight: 700;
+            color: #FFFFFF;
+            letter-spacing: 1.5px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .admin-sidebar-brand span {
+            color: var(--gold-primary);
+        }
+
+        .admin-nav-link {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 14px 24px;
+            color: #D6D3D1;
+            font-size: 14px;
+            font-weight: 500;
+            transition: all 0.25s ease;
+            cursor: pointer;
+            border-left: 3px solid transparent;
+        }
+
+        .admin-nav-link:hover,
+        .admin-nav-link.active {
+            color: #FFFFFF;
+            background: rgba(197, 160, 89, 0.15);
+            border-left-color: var(--gold-primary);
+        }
+
+        .admin-nav-link i {
+            font-size: 16px;
+            color: var(--gold-primary);
+            width: 20px;
+        }
+
+        .admin-main-content {
+            margin-left: 260px;
+            padding: 30px;
+            transition: all 0.3s ease;
+        }
+
+        @media (max-width: 991.98px) {
+            .admin-sidebar {
+                transform: translateX(-100%);
+            }
+            .admin-sidebar.show {
+                transform: translateX(0);
+            }
+            .admin-main-content {
+                margin-left: 0;
+                padding: 18px;
+            }
+        }
+
+        .kpi-card {
+            background: #FFFFFF;
+            border: 1px solid var(--border-gold);
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 4px 15px rgba(28, 25, 23, 0.04);
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .kpi-icon {
+            width: 52px;
+            height: 52px;
+            border-radius: 10px;
+            background: var(--gold-subtle);
+            color: var(--gold-dark);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 22px;
+            flex-shrink: 0;
+        }
+
+        .kpi-value {
+            font-family: var(--font-heading);
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--charcoal-head);
+            line-height: 1.1;
+        }
+
+        .kpi-title {
+            font-size: 12px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--text-muted);
+        }
+
+        .status-badge-pending { background: #FEF3C7; color: #B45309; border: 1px solid #FCD34D; }
+        .status-badge-confirmed { background: #D1FAE5; color: #047857; border: 1px solid #6EE7B7; }
+        .status-badge-checked-in { background: #E0E7FF; color: #4338CA; border: 1px solid #A5B4FC; }
+        .status-badge-checked-out { background: #F3F4F6; color: #4B5563; border: 1px solid #D1D5DB; }
+        .status-badge-cancelled { background: #FEE2E2; color: #B91C1C; border: 1px solid #FCA5A5; }
+
+        .custom-table {
+            background: #FFFFFF;
+            border-radius: 10px;
+            overflow: hidden;
+            border: 1px solid var(--border-color);
+        }
+
+        .custom-table th {
+            background: #F4ECE0;
+            color: var(--charcoal-head);
+            font-weight: 700;
+            font-size: 12.5px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            padding: 14px 16px;
+            border-bottom: 2px solid var(--border-gold);
+        }
+
+        .custom-table td {
+            padding: 14px 16px;
+            vertical-align: middle;
+            font-size: 14px;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        /* Auth Gate Overlay */
+        #authOverlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(28, 25, 23, 0.95);
+            backdrop-filter: blur(12px);
+            z-index: 9999;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .auth-card {
+            width: 100%;
+            max-width: 420px;
+            background: #FFFFFF;
+            border-radius: 12px;
+            border: 2px solid var(--gold-primary);
+            padding: 36px 30px;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- AUTHENTICATION GATE OVERLAY -->
+    <div id="authOverlay">
+        <div class="auth-card text-center">
+            <div class="mb-3">
+                <span class="nav-brand-text text-dark fs-3">VIVANA <span>HOTEL</span></span>
+            </div>
+            <h5 class="fw-bold text-dark mb-1">Back-Office Staff Login</h5>
+            <p class="text-muted small mb-4">Enter manager credentials to access the live booking dashboard.</p>
+            
+            <div class="text-start mb-3">
+                <label class="form-label small fw-bold">Admin Email</label>
+                <input type="email" id="authEmail" class="form-control" value="admin@hotelvivana.com">
+            </div>
+            <div class="text-start mb-4">
+                <label class="form-label small fw-bold">Password</label>
+                <input type="password" id="authPassword" class="form-control" value="vivana2026">
+            </div>
+            <button type="button" class="btn btn-book-stay w-100 py-3 fw-bold" onclick="performLogin()">
+                <i class="fa-solid fa-lock-open me-2"></i> SIGN IN TO ADMIN PANEL
+            </button>
+            <div id="authError" class="text-danger small mt-3 d-none">Invalid credentials. Default: admin@hotelvivana.com / vivana2026</div>
+        </div>
+    </div>
+
+    <!-- MAIN ADMIN WRAPPER -->
+    <div id="adminApp" class="d-none">
+
+        <!-- SIDEBAR NAVIGATION -->
+        <aside class="admin-sidebar" id="adminSidebar">
+            <div class="admin-sidebar-brand d-flex align-items-center justify-content-between">
+                <span>VIVANA <span>DESK</span></span>
+                <button class="btn btn-sm text-light d-lg-none" onclick="toggleSidebar()"><i class="fa-solid fa-xmark"></i></button>
+            </div>
+            <nav class="mt-3">
+                <div class="admin-nav-link active" onclick="switchPage('dashboard')"><i class="fa-solid fa-chart-pie"></i> Overview / Dashboard</div>
+                <div class="admin-nav-link" onclick="switchPage('bookings')"><i class="fa-solid fa-calendar-check"></i> Bookings</div>
+                <div class="admin-nav-link" onclick="switchPage('guests')"><i class="fa-solid fa-users"></i> Guests Roster</div>
+                <div class="admin-nav-link" onclick="switchPage('inventory')"><i class="fa-solid fa-bed"></i> Rooms & Inventory</div>
+                <div class="admin-nav-link" onclick="switchPage('events')"><i class="fa-solid fa-champagne-glasses"></i> Events & Banquets</div>
+                <div class="admin-nav-link" onclick="switchPage('offers')"><i class="fa-solid fa-tags"></i> Offers & Promos</div>
+                <div class="admin-nav-link" onclick="switchPage('reviews')"><i class="fa-solid fa-star"></i> Guest Reviews</div>
+                <div class="admin-nav-link" onclick="switchPage('reports')"><i class="fa-solid fa-file-invoice-dollar"></i> Revenue & Reports</div>
+                <div class="admin-nav-link" onclick="switchPage('settings')"><i class="fa-solid fa-gears"></i> Hotel Settings</div>
+            </nav>
+            <div class="p-3 mt-auto border-top border-secondary position-absolute bottom-0 w-100">
+                <div class="d-flex align-items-center justify-content-between">
+                    <div class="small text-light"><i class="fa-solid fa-circle-user text-gold me-1"></i> Manager</div>
+                    <button class="btn btn-sm btn-outline-danger py-1 px-2 text-white" onclick="logoutAdmin()">Logout</button>
+                </div>
+            </div>
+        </aside>
+
+        <!-- MAIN CONTENT AREA -->
+        <main class="admin-main-content">
+            
+            <!-- TOP BAR -->
+            <div class="d-flex align-items-center justify-content-between mb-4 pb-3 border-bottom">
+                <div class="d-flex align-items-center gap-3">
+                    <button class="btn btn-gold d-lg-none" onclick="toggleSidebar()"><i class="fa-solid fa-bars"></i></button>
+                    <div>
+                        <h3 class="heading-font text-dark mb-0" id="currentPageTitle">Overview / Dashboard</h3>
+                        <span class="small text-muted">Hotel Vivana Siripuram Live Management</span>
+                    </div>
+                </div>
+                <div class="d-flex align-items-center gap-3">
+                    <a href="index.html" target="_blank" class="btn btn-outline-gold btn-sm"><i class="fa-solid fa-arrow-up-right-from-square me-1"></i> View Public Site</a>
+                    <button class="btn btn-book-stay btn-sm" onclick="openManualBookingModal()"><i class="fa-solid fa-plus me-1"></i> Add Manual Booking</button>
+                </div>
+            </div>
+
+            <!-- PAGE 1: OVERVIEW / DASHBOARD -->
+            <div id="page-dashboard" class="admin-page">
+                
+                <!-- KPI CARDS ROW -->
+                <div class="row g-3 mb-4">
+                    <div class="col-xl-2 col-md-4 col-6">
+                        <div class="kpi-card">
+                            <div class="kpi-icon"><i class="fa-solid fa-right-to-bracket"></i></div>
+                            <div>
+                                <div class="kpi-value" id="kpiCheckIns">0</div>
+                                <div class="kpi-title">Today Check-Ins</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-2 col-md-4 col-6">
+                        <div class="kpi-card">
+                            <div class="kpi-icon"><i class="fa-solid fa-right-from-bracket"></i></div>
+                            <div>
+                                <div class="kpi-value" id="kpiCheckOuts">0</div>
+                                <div class="kpi-title">Today Check-Outs</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-2 col-md-4 col-6">
+                        <div class="kpi-card">
+                            <div class="kpi-icon"><i class="fa-solid fa-calendar-days"></i></div>
+                            <div>
+                                <div class="kpi-value" id="kpiTotalBookings">0</div>
+                                <div class="kpi-title">Bookings (Month)</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-2 col-md-4 col-6">
+                        <div class="kpi-card">
+                            <div class="kpi-icon"><i class="fa-solid fa-percent"></i></div>
+                            <div>
+                                <div class="kpi-value" id="kpiOccupancy">68%</div>
+                                <div class="kpi-title">Occupancy Rate</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-2 col-md-4 col-6">
+                        <div class="kpi-card">
+                            <div class="kpi-icon"><i class="fa-solid fa-indian-rupee-sign"></i></div>
+                            <div>
+                                <div class="kpi-value" id="kpiRevenue">₹0</div>
+                                <div class="kpi-title">Total Revenue</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-2 col-md-4 col-6">
+                        <div class="kpi-card">
+                            <div class="kpi-icon"><i class="fa-solid fa-hourglass-half"></i></div>
+                            <div>
+                                <div class="kpi-value" id="kpiPending">0</div>
+                                <div class="kpi-title">Pending Action</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- CHARTS ROW -->
+                <div class="row g-4 mb-4">
+                    <div class="col-lg-8">
+                        <div class="bg-white p-4 rounded-3 border shadow-sm h-100">
+                            <h5 class="fw-bold text-dark mb-3"><i class="fa-solid fa-chart-line text-gold me-2"></i> 30-Day Revenue & Booking Trend</h5>
+                            <canvas id="revenueChart" height="220"></canvas>
+                        </div>
+                    </div>
+                    <div class="col-lg-4">
+                        <div class="bg-white p-4 rounded-3 border shadow-sm h-100">
+                            <h5 class="fw-bold text-dark mb-3"><i class="fa-solid fa-chart-pie text-gold me-2"></i> Bookings by Room Type</h5>
+                            <canvas id="roomBreakdownChart" height="220"></canvas>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- RECENT BOOKINGS TABLE -->
+                <div class="bg-white p-4 rounded-3 border shadow-sm">
+                    <div class="d-flex align-items-center justify-content-between mb-3">
+                        <h5 class="fw-bold text-dark mb-0"><i class="fa-solid fa-clock-rotate-left text-gold me-2"></i> Recent Reservations (Live Database)</h5>
+                        <button class="btn btn-sm btn-outline-gold" onclick="switchPage('bookings')">View All Bookings</button>
+                    </div>
+                    <div class="table-responsive">
+                        <table class="table custom-table mb-0">
+                            <thead>
+                                <tr>
+                                    <th>Booking ID</th>
+                                    <th>Guest Name</th>
+                                    <th>Phone</th>
+                                    <th>Room Type</th>
+                                    <th>Check-In</th>
+                                    <th>Total (₹)</th>
+                                    <th>Status</th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+                            <tbody id="recentBookingsTableBody">
+                                <!-- Populated dynamically -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- PAGE 2: BOOKINGS -->
+            <div id="page-bookings" class="admin-page d-none">
+                <div class="bg-white p-4 rounded-3 border shadow-sm mb-4">
+                    <div class="row g-3 align-items-center">
+                        <div class="col-md-4">
+                            <div class="input-group">
+                                <span class="input-group-text bg-white"><i class="fa-solid fa-magnifying-glass text-gold"></i></span>
+                                <input type="text" id="bookingSearchInput" class="form-control" placeholder="Search by name, phone, ID..." oninput="filterBookings()">
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <select id="bookingStatusFilter" class="form-select" onchange="filterBookings()">
+                                <option value="all">All Statuses</option>
+                                <option value="pending">Pending</option>
+                                <option value="confirmed">Confirmed</option>
+                                <option value="checked-in">Checked-In</option>
+                                <option value="checked-out">Checked-Out</option>
+                                <option value="cancelled">Cancelled</option>
+                            </select>
+                        </div>
+                        <div class="col-md-3">
+                            <select id="bookingRoomFilter" class="form-select" onchange="filterBookings()">
+                                <option value="all">All Room Types</option>
+                                <option value="Deluxe Room">Deluxe Room</option>
+                                <option value="Premium Room">Premium Room</option>
+                                <option value="Executive Suite">Executive Suite</option>
+                                <option value="Family Suite">Family Suite</option>
+                                <option value="Presidential Suite">Presidential Suite</option>
+                            </select>
+                        </div>
+                        <div class="col-md-2 text-end">
+                            <button class="btn btn-outline-secondary w-100" onclick="exportBookingsCSV()"><i class="fa-solid fa-file-csv me-1"></i> Export CSV</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="table-responsive custom-table">
+                    <table class="table mb-0">
+                        <thead>
+                            <tr>
+                                <th>Booking ID</th>
+                                <th>Guest Name</th>
+                                <th>Phone</th>
+                                <th>Room Type</th>
+                                <th>Check-In</th>
+                                <th>Check-Out</th>
+                                <th>Add-Ons</th>
+                                <th>Total (₹)</th>
+                                <th>Status</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="fullBookingsTableBody">
+                            <!-- Populated dynamically -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- PAGE 3: GUESTS ROSTER -->
+            <div id="page-guests" class="admin-page d-none">
+                <div class="bg-white p-4 rounded-3 border shadow-sm">
+                    <h5 class="fw-bold text-dark mb-3"><i class="fa-solid fa-users text-gold me-2"></i> Guest Directory & VIP Roster</h5>
+                    <div class="table-responsive custom-table">
+                        <table class="table mb-0">
+                            <thead>
+                                <tr>
+                                    <th>Guest Name</th>
+                                    <th>Phone</th>
+                                    <th>Email</th>
+                                    <th>Total Stays</th>
+                                    <th>Total Spent (₹)</th>
+                                    <th>Last Stay</th>
+                                    <th>Guest Category</th>
+                                </tr>
+                            </thead>
+                            <tbody id="guestsTableBody">
+                                <!-- Populated dynamically -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <!-- PAGE 4: ROOMS & INVENTORY -->
+            <div id="page-inventory" class="admin-page d-none">
+                <div class="bg-white p-4 rounded-3 border shadow-sm mb-4">
+                    <h5 class="fw-bold text-dark mb-3"><i class="fa-solid fa-bed text-gold me-2"></i> Room Inventory & Dynamic Price Manager</h5>
+                    <div class="table-responsive custom-table">
+                        <table class="table mb-0">
+                            <thead>
+                                <tr>
+                                    <th>Room Type</th>
+                                    <th>Total Inventory</th>
+                                    <th>Booked</th>
+                                    <th>Available</th>
+                                    <th>Base Price</th>
+                                    <th>Discount Price (₹)</th>
+                                    <th>Scarcity Pill Text</th>
+                                    <th>Status</th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+                            <tbody id="inventoryTableBody">
+                                <!-- Populated dynamically -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <!-- PAGE 5: EVENTS & BANQUETS -->
+            <div id="page-events" class="admin-page d-none">
+                <div class="bg-white p-4 rounded-3 border shadow-sm">
+                    <h5 class="fw-bold text-dark mb-3"><i class="fa-solid fa-champagne-glasses text-gold me-2"></i> Weddings & Banquet Inquiries</h5>
+                    <div class="table-responsive custom-table">
+                        <table class="table mb-0">
+                            <thead>
+                                <tr>
+                                    <th>Inquiry ID</th>
+                                    <th>Client / Event Name</th>
+                                    <th>Phone / Contact</th>
+                                    <th>Event Type</th>
+                                    <th>Event Date</th>
+                                    <th>Guest Count</th>
+                                    <th>Status</th>
+                                </tr>
+                            </thead>
+                            <tbody id="eventsTableBody">
+                                <!-- Populated dynamically -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <!-- PAGE 6: OFFERS & PROMOS -->
+            <div id="page-offers" class="admin-page d-none">
+                <div class="bg-white p-4 rounded-3 border shadow-sm">
+                    <div class="d-flex justify-content-between align-items-center mb-3">
+                        <h5 class="fw-bold text-dark mb-0"><i class="fa-solid fa-tags text-gold me-2"></i> Promo Code Manager</h5>
+                        <button class="btn btn-book-stay btn-sm" onclick="openNewOfferModal()"><i class="fa-solid fa-plus me-1"></i> Add New Promo Code</button>
+                    </div>
+                    <div class="table-responsive custom-table">
+                        <table class="table mb-0">
+                            <thead>
+                                <tr>
+                                    <th>Code</th>
+                                    <th>Discount %</th>
+                                    <th>Usage Count</th>
+                                    <th>Expiry Date</th>
+                                    <th>Status</th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+                            <tbody id="offersTableBody">
+                                <!-- Populated dynamically -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <!-- PAGE 7: REVIEWS -->
+            <div id="page-reviews" class="admin-page d-none">
+                <div class="bg-white p-4 rounded-3 border shadow-sm">
+                    <h5 class="fw-bold text-dark mb-3"><i class="fa-solid fa-star text-gold me-2"></i> Public Guest Reviews Curation</h5>
+                    <p class="text-muted small mb-4">Manage featured reviews shown across the homepage review tabs (All, Mutton Pulao, Staff, Room Comfort).</p>
+                    <div class="row g-3" id="reviewsAdminContainer">
+                        <!-- Populated dynamically -->
+                    </div>
+                </div>
+            </div>
+
+            <!-- PAGE 8: REVENUE & REPORTS -->
+            <div id="page-reports" class="admin-page d-none">
+                <div class="bg-white p-4 rounded-3 border shadow-sm text-center py-5">
+                    <i class="fa-solid fa-file-invoice-dollar fs-1 text-gold mb-3 d-block"></i>
+                    <h4 class="fw-bold text-dark mb-2">Financial Reports & Export Engine</h4>
+                    <p class="text-muted max-w-700 mx-auto mb-4">Export detailed CSV and PDF financial audits of booking revenue, occupancy trends, and payment breakdowns.</p>
+                    <button class="btn btn-book-stay py-3 px-5" onclick="exportBookingsCSV()"><i class="fa-solid fa-download me-2"></i> DOWNLOAD COMPLETE REVENUE AUDIT (CSV)</button>
+                </div>
+            </div>
+
+            <!-- PAGE 9: SETTINGS -->
+            <div id="page-settings" class="admin-page d-none">
+                <div class="bg-white p-4 rounded-3 border shadow-sm max-w-900">
+                    <h5 class="fw-bold text-dark mb-3"><i class="fa-solid fa-gears text-gold me-2"></i> Central Hotel Settings (Single Source of Truth)</h5>
+                    <form id="settingsForm">
+                        <div class="row g-3 mb-3">
+                            <div class="col-md-6">
+                                <label class="form-label small fw-bold">Hotel Property Name</label>
+                                <input type="text" id="setHotelName" class="form-control" value="HOTEL Vivana Siripuram">
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label small fw-bold">Front Desk Phone Number</label>
+                                <input type="text" id="setPhone" class="form-control" value="+91 891 270 5000">
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label small fw-bold">WhatsApp Desk Number</label>
+                                <input type="text" id="setWhatsapp" class="form-control" value="+91 891 270 5000">
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label small fw-bold">Official Reservation Email</label>
+                                <input type="email" id="setEmail" class="form-control" value="reservations@hotelvivana.com">
+                            </div>
+                            <div class="col-12">
+                                <label class="form-label small fw-bold">Announcement Bar Text Banner</label>
+                                <input type="text" id="setAnnouncement" class="form-control" value="Direct Code: VIVANA10 (10% OFF)">
+                            </div>
+                        </div>
+                        <button type="button" class="btn btn-book-stay py-2 px-4" onclick="saveSettings()">SAVE SETTINGS</button>
+                    </form>
+                </div>
+            </div>
+
+        </main>
+    </div>
+
+    <!-- BOOKING DETAIL MODAL -->
+    <div class="modal fade" id="bookingDetailModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title fw-bold text-dark">RESERVATION DETAILS — <span id="dtlBookingId" class="text-gold">VIV-2026-XXXX</span></h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body p-4">
+                    <div class="row g-3 mb-3">
+                        <div class="col-md-6">
+                            <label class="small text-muted d-block">Guest Name</label>
+                            <strong class="fs-5 text-dark" id="dtlGuestName">Satya Lalitha</strong>
+                        </div>
+                        <div class="col-md-6">
+                            <label class="small text-muted d-block">Phone / Contact</label>
+                            <strong class="text-dark" id="dtlPhone">+91 98765 43210</strong>
+                        </div>
+                        <div class="col-md-6">
+                            <label class="small text-muted d-block">Room Reserved</label>
+                            <strong class="text-dark" id="dtlRoomType">Deluxe Room</strong>
+                        </div>
+                        <div class="col-md-6">
+                            <label class="small text-muted d-block">Dates of Stay</label>
+                            <strong class="text-dark" id="dtlDates">2026-07-29 to 2026-07-31</strong>
+                        </div>
+                        <div class="col-md-6">
+                            <label class="small text-muted d-block">Add-Ons Selected</label>
+                            <span class="text-dark" id="dtlAddons">None</span>
+                        </div>
+                        <div class="col-md-6">
+                            <label class="small text-muted d-block">Total Estimated Amount</label>
+                            <strong class="text-gold fs-5" id="dtlTotal">₹3,499</strong>
+                        </div>
+                        <div class="col-12">
+                            <label class="small text-muted d-block">Special Guest Requests</label>
+                            <div class="p-3 bg-alt rounded border text-dark small" id="dtlRequests">High floor courtyard room preferred.</div>
+                        </div>
+                        <div class="col-12">
+                            <label class="small text-muted d-block fw-bold"><i class="fa-solid fa-robot text-gold me-1"></i> Vapi AI Voice Agent Status & Call Transcript</label>
+                            <div class="p-3 bg-dark text-light rounded border border-warning small">
+                                <div class="d-flex align-items-center justify-content-between mb-2">
+                                    <span class="badge bg-gold text-dark" id="dtlVapiStatus">CALL TRIGGERED</span>
+                                    <span class="x-small text-muted" id="dtlVapiCallId">VAPI-CALL-ID</span>
+                                </div>
+                                <div class="x-small text-light opacity-90" id="dtlVapiTranscript">"AI Agent call triggered within 5-20 seconds of booking submission. Greeting guest and confirming room selection."</div>
+                            </div>
+                        </div>
+                        <div class="col-12">
+                            <label class="small text-muted d-block fw-bold">Internal Staff Notes</label>
+                            <textarea id="dtlStaffNotes" class="form-control" rows="2" placeholder="Add private front desk notes (e.g. Guest paid cash on arrival)..."></textarea>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-book-stay" onclick="saveStaffNotes()">SAVE NOTES</button>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <!-- MANUAL BOOKING MODAL -->
+    <div class="modal fade" id="manualBookingModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title fw-bold text-dark">+ ADD MANUAL BOOKING (WALK-IN / PHONE)</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body p-4">
+                    <form class="row g-3" id="manualBookingForm">
+                        <div class="col-md-6">
+                            <label class="form-label small fw-bold">Guest Full Name *</label>
+                            <input type="text" id="mbName" class="form-control" placeholder="Guest Name" required>
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label small fw-bold">Phone Number *</label>
+                            <input type="tel" id="mbPhone" class="form-control" placeholder="+91 98765 43210" required>
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label small fw-bold">Check-In Date *</label>
+                            <input type="date" id="mbCheckIn" class="form-control" required>
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label small fw-bold">Check-Out Date *</label>
+                            <input type="date" id="mbCheckOut" class="form-control" required>
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label small fw-bold">Room Category *</label>
+                            <select id="mbRoom" class="form-select">
+                                <option>Deluxe Room</option>
+                                <option>Premium Room</option>
+                                <option>Executive Suite</option>
+                                <option>Family Suite</option>
+                                <option>Presidential Suite</option>
+                            </select>
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label small fw-bold">Payment Status</label>
+                            <select id="mbPayment" class="form-select">
+                                <option value="paid">Paid</option>
+                                <option value="pending" selected>Pending</option>
+                            </select>
+                        </div>
+                        <div class="col-12">
+                            <button type="button" class="btn btn-book-stay w-100 py-3" onclick="submitManualBooking()">CREATE RESERVATION</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="js/bootstrap.bundle.js"></script>
+    <script>
+        let currentActiveBookingId = null;
+        let allBookingsData = [];
+        let revenueChartInstance = null;
+        let roomChartInstance = null;
+
+        // Auth handling
+        function performLogin() {
+            const email = document.getElementById('authEmail').value;
+            const password = document.getElementById('authPassword').value;
+
+            if ((email === 'admin@hotelvivana.com' || email === 'admin') && password === 'vivana2026') {
+                localStorage.setItem('vivana_admin_auth', 'authenticated');
+                document.getElementById('authOverlay').classList.add('d-none');
+                document.getElementById('adminApp').classList.remove('d-none');
+                loadDashboardData();
+            } else {
+                document.getElementById('authError').classList.remove('d-none');
+            }
+        }
+
+        function checkAuth() {
+            if (localStorage.getItem('vivana_admin_auth') === 'authenticated') {
+                document.getElementById('authOverlay').classList.add('d-none');
+                document.getElementById('adminApp').classList.remove('d-none');
+                loadDashboardData();
+            }
+        }
+
+        function logoutAdmin() {
+            localStorage.removeItem('vivana_admin_auth');
+            location.reload();
+        }
+
+        function toggleSidebar() {
+            document.getElementById('adminSidebar').classList.toggle('show');
+        }
+
+        function switchPage(pageId) {
+            document.querySelectorAll('.admin-page').forEach(p => p.classList.add('d-none'));
+            document.querySelectorAll('.admin-nav-link').forEach(l => l.classList.remove('active'));
+
+            const targetPage = document.getElementById(`page-${pageId}`);
+            if (targetPage) targetPage.classList.remove('d-none');
+
+            document.getElementById('currentPageTitle').innerText = pageId.toUpperCase() + ' MANAGEMENT';
+
+            if (pageId === 'dashboard') loadDashboardData();
+            else if (pageId === 'bookings') loadFullBookings();
+            else if (pageId === 'guests') loadGuestsData();
+            else if (pageId === 'inventory') loadInventoryData();
+            else if (pageId === 'events') loadEventsData();
+            else if (pageId === 'offers') loadOffersData();
+            else if (pageId === 'settings') loadSettingsData();
+        }
+
+        // Data Loaders
+        async function loadDashboardData() {
+            try {
+                const res = await fetch('/api/admin/stats');
+                const data = await res.json();
+
+                if (data.success) {
+                    document.getElementById('kpiCheckIns').innerText = data.kpis.todayCheckIns;
+                    document.getElementById('kpiCheckOuts').innerText = data.kpis.todayCheckOuts;
+                    document.getElementById('kpiTotalBookings').innerText = data.kpis.totalBookingsMonth;
+                    document.getElementById('kpiOccupancy').innerText = `${data.kpis.occupancyRate}%`;
+                    document.getElementById('kpiRevenue').innerText = `₹${data.kpis.totalRevenueMonth.toLocaleString('en-IN')}`;
+                    document.getElementById('kpiPending').innerText = data.kpis.pendingReservations;
+
+                    renderRecentBookingsTable(data.recentBookings);
+                    renderCharts(data.roomBreakdown);
+                }
+            } catch (err) {
+                console.error('Failed to load stats:', err);
+            }
+        }
+
+        function renderRecentBookingsTable(bookings) {
+            const tbody = document.getElementById('recentBookingsTableBody');
+            tbody.innerHTML = '';
+
+            bookings.forEach(b => {
+                const tr = document.createElement('tr');
+                tr.innerHTML = `
+                    <td><strong class="text-gold">${b.id}</strong></td>
+                    <td>${b.guest_name}</td>
+                    <td>${b.phone}</td>
+                    <td>${b.room_type}</td>
+                    <td>${b.checkin_date}</td>
+                    <td>₹${(b.total_amount || 0).toLocaleString('en-IN')}</td>
+                    <td><span class="badge status-badge-${b.status}">${b.status.toUpperCase()}</span></td>
+                    <td><button class="btn btn-sm btn-outline-gold" onclick="viewBookingDetail('${b.id}')">View</button></td>
+                `;
+                tbody.appendChild(tr);
+            });
+        }
+
+        async function loadFullBookings() {
+            try {
+                const res = await fetch('/api/bookings');
+                const data = await res.json();
+
+                if (data.success) {
+                    allBookingsData = data.bookings;
+                    renderFullBookingsTable(allBookingsData);
+                }
+            } catch (err) {
+                console.error('Failed to load bookings:', err);
+            }
+        }
+
+        function renderFullBookingsTable(bookings) {
+            const tbody = document.getElementById('fullBookingsTableBody');
+            tbody.innerHTML = '';
+
+            bookings.forEach(b => {
+                const tr = document.createElement('tr');
+                tr.innerHTML = `
+                    <td><strong class="text-gold">${b.id}</strong></td>
+                    <td>${b.guest_name}</td>
+                    <td>${b.phone}</td>
+                    <td>${b.room_type}</td>
+                    <td>${b.checkin_date}</td>
+                    <td>${b.checkout_date}</td>
+                    <td><small class="text-muted">${b.addons || 'None'}</small></td>
+                    <td>₹${(b.total_amount || 0).toLocaleString('en-IN')}</td>
+                    <td>
+                        <select class="form-select form-select-sm" onchange="updateBookingStatus('${b.id}', this.value)">
+                            <option value="pending" ${b.status === 'pending' ? 'selected' : ''}>Pending</option>
+                            <option value="confirmed" ${b.status === 'confirmed' ? 'selected' : ''}>Confirmed</option>
+                            <option value="checked-in" ${b.status === 'checked-in' ? 'selected' : ''}>Checked-In</option>
+                            <option value="checked-out" ${b.status === 'checked-out' ? 'selected' : ''}>Checked-Out</option>
+                            <option value="cancelled" ${b.status === 'cancelled' ? 'selected' : ''}>Cancelled</option>
+                        </select>
+                    </td>
+                    <td><button class="btn btn-sm btn-outline-gold" onclick="viewBookingDetail('${b.id}')">Detail</button></td>
+                `;
+                tbody.appendChild(tr);
+            });
+        }
+
+        function filterBookings() {
+            const q = document.getElementById('bookingSearchInput').value.toLowerCase();
+            const status = document.getElementById('bookingStatusFilter').value;
+            const room = document.getElementById('bookingRoomFilter').value;
+
+            let filtered = allBookingsData.filter(b => {
+                const matchesQ = b.guest_name.toLowerCase().includes(q) || b.phone.includes(q) || b.id.toLowerCase().includes(q);
+                const matchesStatus = status === 'all' || b.status === status;
+                const matchesRoom = room === 'all' || b.room_type === room;
+                return matchesQ && matchesStatus && matchesRoom;
+            });
+
+            renderFullBookingsTable(filtered);
+        }
+
+        async function updateBookingStatus(id, newStatus) {
+            try {
+                const res = await fetch(`/api/bookings/${id}`, {
+                    method: 'PATCH',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ status: newStatus })
+                });
+                const data = await res.json();
+                if (data.success) {
+                    alert(`Booking ${id} status updated to ${newStatus.toUpperCase()}`);
+                }
+            } catch (err) {
+                console.error('Failed to update status:', err);
+            }
+        }
+
+        async function viewBookingDetail(id) {
+            const booking = allBookingsData.find(b => b.id === id);
+            if (!booking) return;
+
+            currentActiveBookingId = id;
+            document.getElementById('dtlBookingId').innerText = booking.id;
+            document.getElementById('dtlGuestName').innerText = booking.guest_name;
+            document.getElementById('dtlPhone').innerText = booking.phone;
+            document.getElementById('dtlRoomType').innerText = booking.room_type;
+            document.getElementById('dtlDates').innerText = `${booking.checkin_date} to ${booking.checkout_date}`;
+            document.getElementById('dtlAddons').innerText = booking.addons || 'None';
+            document.getElementById('dtlTotal').innerText = `₹${(booking.total_amount || 0).toLocaleString('en-IN')}`;
+            document.getElementById('dtlRequests').innerText = booking.special_requests || 'Standard luxury request.';
+            document.getElementById('dtlStaffNotes').value = booking.staff_notes || '';
+
+            document.getElementById('dtlVapiStatus').innerText = (booking.vapi_call_status || 'TRIGGERED').toUpperCase();
+            document.getElementById('dtlVapiCallId').innerText = booking.vapi_call_id || 'CALL-INITIATED';
+            document.getElementById('dtlVapiTranscript').innerText = booking.vapi_transcript || 'AI Voice Agent call triggered automatically to +91 customer phone number on booking submission. Greeting guest & verifying room details.';
+
+            const modal = new bootstrap.Modal(document.getElementById('bookingDetailModal'));
+            modal.show();
+        }
+
+
+        async function saveStaffNotes() {
+            if (!currentActiveBookingId) return;
+            const notes = document.getElementById('dtlStaffNotes').value;
+
+            try {
+                await fetch(`/api/bookings/${currentActiveBookingId}`, {
+                    method: 'PATCH',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ notes })
+                });
+                alert('Staff notes saved successfully.');
+            } catch (err) {
+                console.error('Error saving notes:', err);
+            }
+        }
+
+        async function loadGuestsData() {
+            try {
+                const res = await fetch('/api/guests');
+                const data = await res.json();
+                if (data.success) {
+                    const tbody = document.getElementById('guestsTableBody');
+                    tbody.innerHTML = '';
+                    data.guests.forEach(g => {
+                        const tr = document.createElement('tr');
+                        tr.innerHTML = `
+                            <td><strong class="text-dark">${g.guest_name}</strong></td>
+                            <td>${g.phone}</td>
+                            <td>${g.email || 'N/A'}</td>
+                            <td>${g.total_stays} stay(s)</td>
+                            <td>₹${g.total_spent.toLocaleString('en-IN')}</td>
+                            <td>${g.last_stay_date}</td>
+                            <td><span class="badge ${g.tag === 'VIP' ? 'bg-warning text-dark' : 'bg-secondary'}">${g.tag}</span></td>
+                        `;
+                        tbody.appendChild(tr);
+                    });
+                }
+            } catch (err) {
+                console.error(err);
+            }
+        }
+
+        async function loadInventoryData() {
+            try {
+                const res = await fetch('/api/inventory');
+                const data = await res.json();
+                if (data.success) {
+                    const tbody = document.getElementById('inventoryTableBody');
+                    tbody.innerHTML = '';
+                    data.rooms.forEach(r => {
+                        const tr = document.createElement('tr');
+                        tr.innerHTML = `
+                            <td><strong class="text-dark">${r.name}</strong></td>
+                            <td>${r.total_rooms}</td>
+                            <td>${r.booked_rooms}</td>
+                            <td>${r.total_rooms - r.booked_rooms}</td>
+                            <td>₹${r.base_price.toLocaleString('en-IN')}</td>
+                            <td><input type="number" class="form-control form-control-sm" style="width:100px;" value="${r.discount_price}" id="invPrice_${r.id}"></td>
+                            <td><input type="text" class="form-control form-control-sm" value="${r.scarcity_text}" id="invScarcity_${r.id}"></td>
+                            <td><span class="badge bg-success">${r.status}</span></td>
+                            <td><button class="btn btn-sm btn-book-stay" onclick="updateInventoryItem('${r.id}')">Save</button></td>
+                        `;
+                        tbody.appendChild(tr);
+                    });
+                }
+            } catch (err) {
+                console.error(err);
+            }
+        }
+
+        async function updateInventoryItem(id) {
+            const price = document.getElementById(`invPrice_${id}`).value;
+            const scarcity = document.getElementById(`invScarcity_${id}`).value;
+
+            try {
+                const res = await fetch(`/api/inventory/${id}`, {
+                    method: 'PATCH',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ discount_price: price, scarcity_text: scarcity })
+                });
+                const data = await res.json();
+                if (data.success) alert(data.message);
+            } catch (err) {
+                console.error(err);
+            }
+        }
+
+        async function loadEventsData() {
+            try {
+                const res = await fetch('/api/admin/stats');
+                const data = await res.json();
+                if (data.success) {
+                    const tbody = document.getElementById('eventsTableBody');
+                    tbody.innerHTML = '';
+                    data.upcomingEvents.forEach(e => {
+                        const tr = document.createElement('tr');
+                        tr.innerHTML = `
+                            <td><strong class="text-gold">${e.id}</strong></td>
+                            <td>${e.name}</td>
+                            <td>${e.phone}</td>
+                            <td>${e.event_type}</td>
+                            <td>${e.preferred_date}</td>
+                            <td>${e.guest_count} Guests</td>
+                            <td><span class="badge bg-gold text-dark">${e.status}</span></td>
+                        `;
+                        tbody.appendChild(tr);
+                    });
+                }
+            } catch (err) {
+                console.error(err);
+            }
+        }
+
+        async function loadOffersData() {
+            try {
+                const res = await fetch('/api/offers');
+                const data = await res.json();
+                if (data.success) {
+                    const tbody = document.getElementById('offersTableBody');
+                    tbody.innerHTML = '';
+                    data.offers.forEach(o => {
+                        const tr = document.createElement('tr');
+                        tr.innerHTML = `
+                            <td><strong class="text-gold">${o.code}</strong></td>
+                            <td>${o.discount_percent}% OFF</td>
+                            <td>${o.usage_count} times</td>
+                            <td>${o.expiry_date}</td>
+                            <td><span class="badge bg-success">${o.status}</span></td>
+                            <td><button class="btn btn-sm btn-outline-danger" onclick="toggleOffer('${o.id}', '${o.status}')">Toggle</button></td>
+                        `;
+                        tbody.appendChild(tr);
+                    });
+                }
+            } catch (err) {
+                console.error(err);
+            }
+        }
+
+        async function toggleOffer(id, currentStatus) {
+            const nextStatus = currentStatus === 'Active' ? 'Inactive' : 'Active';
+            try {
+                await fetch(`/api/offers/${id}`, {
+                    method: 'PATCH',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ status: nextStatus })
+                });
+                loadOffersData();
+            } catch (err) {
+                console.error(err);
+            }
+        }
+
+        function openManualBookingModal() {
+            const today = new Date().toISOString().split('T')[0];
+            document.getElementById('mbCheckIn').value = today;
+            const modal = new bootstrap.Modal(document.getElementById('manualBookingModal'));
+            modal.show();
+        }
+
+        async function submitManualBooking() {
+            const payload = {
+                guest_name: document.getElementById('mbName').value,
+                phone: document.getElementById('mbPhone').value,
+                checkin_date: document.getElementById('mbCheckIn').value,
+                checkout_date: document.getElementById('mbCheckOut').value,
+                room_type: document.getElementById('mbRoom').value,
+                payment_status: document.getElementById('mbPayment').value
+            };
+
+            try {
+                const res = await fetch('/api/bookings', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(payload)
+                });
+                const data = await res.json();
+                if (data.success) {
+                    alert(`Manual booking ${data.booking_id} created successfully!`);
+                    bootstrap.Modal.getInstance(document.getElementById('manualBookingModal')).hide();
+                    loadFullBookings();
+                }
+            } catch (err) {
+                console.error(err);
+            }
+        }
+
+        function exportBookingsCSV() {
+            let csv = 'Booking ID,Guest Name,Phone,Email,Room Type,Check-In,Check-Out,Total Amount,Status\n';
+            allBookingsData.forEach(b => {
+                csv += `"${b.id}","${b.guest_name}","${b.phone}","${b.email}","${b.room_type}","${b.checkin_date}","${b.checkout_date}","${b.total_amount}","${b.status}"\n`;
+            });
+
+            const blob = new Blob([csv], { type: 'text/csv' });
+            const url = window.URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = `Hotel_Vivana_Bookings_${new Date().toISOString().split('T')[0]}.csv`;
+            a.click();
+        }
+
+        function renderCharts(roomBreakdown) {
+            if (revenueChartInstance) revenueChartInstance.destroy();
+            if (roomChartInstance) roomChartInstance.destroy();
+
+            const ctxRev = document.getElementById('revenueChart').getContext('2d');
+            revenueChartInstance = new Chart(ctxRev, {
+                type: 'line',
+                data: {
+                    labels: ['Week 1', 'Week 2', 'Week 3', 'Week 4'],
+                    datasets: [{
+                        label: 'Revenue (₹)',
+                        data: [125000, 184000, 162000, 210000],
+                        borderColor: '#C5A059',
+                        backgroundColor: 'rgba(197, 160, 89, 0.1)',
+                        fill: true,
+                        tension: 0.3
+                    }]
+                }
+            });
+
+            const ctxRoom = document.getElementById('roomBreakdownChart').getContext('2d');
+            roomChartInstance = new Chart(ctxRoom, {
+                type: 'doughnut',
+                data: {
+                    labels: Object.keys(roomBreakdown || { 'Deluxe': 10, 'Premium': 5, 'Executive': 4, 'Family': 2, 'Presidential': 1 }),
+                    datasets: [{
+                        data: Object.values(roomBreakdown || { 'Deluxe': 10, 'Premium': 5, 'Executive': 4, 'Family': 2, 'Presidential': 1 }),
+                        backgroundColor: ['#C5A059', '#9A7836', '#1C1917', '#E8D5B5', '#78716C']
+                    }]
+                }
+            });
+        }
+
+        document.addEventListener('DOMContentLoaded', checkAuth);
+    </script>
+</body>
+
+</html>

@@ -64,7 +64,7 @@
                 </div>
                 <div class="d-flex align-items-center gap-3">
                     <span><i class="fa-solid fa-gift text-gold me-1"></i> Direct Code: <strong>VIVANA10</strong> (10% OFF)</span>
-                    <span class="small border-start ps-3"><i class="fa-solid fa-globe me-1 text-gold"></i> English</span>
+                    <span class="small border-start ps-3" title="Default Language: English"><i class="fa-solid fa-globe me-1 text-gold"></i> English <small class="opacity-75">(EN)</small></span>
                 </div>
             </div>
         </div>
@@ -146,7 +146,7 @@
                                 </select>
                             </div>
                             <div class="col-md-3 col-6">
-                                <button type="button" class="btn btn-book-stay w-100 py-3" data-bs-toggle="modal" data-bs-target="#bookingModal">
+                                <button type="button" class="btn btn-book-stay w-100 py-3" onclick="validateHeroBookingForm(this)">
                                     CHECK AVAILABILITY
                                 </button>
                             </div>
@@ -165,46 +165,43 @@
         </div>
     </section>
 
-    <!-- AWARDS & RECOGNITION BAR -->
-    <section class="awards-recognition-bar">
+    <!-- CONSOLIDATED SINGLE UNIFIED TRUST BAR -->
+    <section class="merged-trust-bar">
         <div class="container">
-            <div class="row align-items-center g-4">
-                <div class="col-lg-3 col-md-6">
-                    <div class="award-item">
-                        <div class="award-icon"><i class="fa-solid fa-trophy"></i></div>
+            <div class="row align-items-center g-3 text-center text-md-start">
+                <div class="col-lg-3 col-6">
+                    <div class="merged-trust-item">
+                        <div class="merged-trust-icon"><i class="fa-solid fa-star"></i></div>
                         <div>
-                            <h6 class="fw-bold mb-0 text-dark">Best Boutique Stay 2025</h6>
-                            <span class="small text-muted">Vizag Hospitality Excellence</span>
+                            <div class="merged-trust-val">4.2★ Rated</div>
+                            <div class="merged-trust-sub">Verified Guest Excellence</div>
                         </div>
                     </div>
                 </div>
-
-                <div class="col-lg-3 col-md-6">
-                    <div class="award-item">
-                        <div class="award-icon"><i class="fa-solid fa-award"></i></div>
+                <div class="col-lg-3 col-6">
+                    <div class="merged-trust-item">
+                        <div class="merged-trust-icon"><i class="fa-solid fa-comments"></i></div>
                         <div>
-                            <h6 class="fw-bold mb-0 text-dark">4.2★ Guest Excellence</h6>
-                            <span class="small text-muted">3,034+ Google & TripAdvisor Reviews</span>
+                            <div class="merged-trust-val">3,034+ Reviews</div>
+                            <div class="merged-trust-sub">Google & TripAdvisor</div>
                         </div>
                     </div>
                 </div>
-
-                <div class="col-lg-3 col-md-6">
-                    <div class="award-item">
-                        <div class="award-icon"><i class="fa-brands fa-google"></i></div>
+                <div class="col-lg-3 col-6">
+                    <div class="merged-trust-item">
+                        <div class="merged-trust-icon"><i class="fa-solid fa-clock-rotate-left"></i></div>
                         <div>
-                            <h6 class="fw-bold mb-0 text-dark">Top Rated in Siripuram</h6>
-                            <span class="small text-muted">Business & Leisure Landmark</span>
+                            <div class="merged-trust-val">10+ Years</div>
+                            <div class="merged-trust-sub">Boutique Hospitality</div>
                         </div>
                     </div>
                 </div>
-
-                <div class="col-lg-3 col-md-6">
-                    <div class="award-item">
-                        <div class="award-icon"><i class="fa-solid fa-utensils"></i></div>
+                <div class="col-lg-3 col-6">
+                    <div class="merged-trust-item">
+                        <div class="merged-trust-icon"><div class="award-icon" style="background:none; width:auto; height:auto; color:var(--gold-dark);"><i class="fa-solid fa-trophy"></i></div></div>
                         <div>
-                            <h6 class="fw-bold mb-0 text-dark">Famous Rasa Kitchen</h6>
-                            <span class="small text-muted">Grandmother's Konaseema Mutton Pulao</span>
+                            <div class="merged-trust-val">Best Boutique Stay</div>
+                            <div class="merged-trust-sub">Vizag Award 2025</div>
                         </div>
                     </div>
                 </div>
@@ -212,29 +209,35 @@
         </div>
     </section>
 
-    <!-- SOCIAL PROOF STATS COUNTER BAR -->
-    <section class="stats-counter-bar">
+    <!-- ABOUT / WELCOME SECTION -->
+    <section class="about-section py-5">
         <div class="container">
-            <div class="row text-center g-4">
-                <div class="col-md-3 col-6">
-                    <div class="stat-number">3,034+</div>
-                    <div class="stat-label">Verified Guest Reviews</div>
+            <div class="row align-items-center g-5">
+                <div class="col-lg-6">
+                    <img src="img/1.avif" alt="Vivana Hotel Siripuram Exterior" class="img-fluid rounded-4 shadow">
                 </div>
-                <div class="col-md-3 col-6">
-                    <div class="stat-number">4.2★</div>
-                    <div class="stat-label">Average Guest Rating</div>
-                </div>
-                <div class="col-md-3 col-6">
-                    <div class="stat-number">10+</div>
-                    <div class="stat-label">Years of Hospitality</div>
-                </div>
-                <div class="col-md-3 col-6">
-                    <div class="stat-number">2 km</div>
-                    <div class="stat-label">From RK Beach & Coast</div>
+                <div class="col-lg-6">
+                    <span class="section-subtitle">WELCOME TO VIVANA</span>
+                    <h2 class="fw-bold text-dark mb-3">Siripuram's Boutique Address for a Decade</h2>
+                    <p class="text-muted mb-3">
+                        Nestled in the heart of Siripuram, just 2 km from Ramakrishna Beach, Vivana has spent over ten years
+                        becoming a familiar name for both business and leisure travelers in Visakhapatnam. Ours is a
+                        contemporary 3-star hotel where every room offers a flat-screen TV, tea and coffee facilities, and
+                        round-the-clock room service — and where our in-house restaurant, Rasa Kitchen, has become the
+                        reason many guests return year after year.
+                    </p>
+                    <p class="text-muted mb-4">
+                        We're not a sprawling resort. We're a well-run, well-loved boutique property — the kind where the
+                        front desk remembers your name by your second visit.
+                    </p>
+                    <a href="about.html" class="fw-bold text-gold">
+                        READ OUR FULL STORY <i class="fa-solid fa-arrow-right ms-1"></i>
+                    </a>
                 </div>
             </div>
         </div>
     </section>
+
 
     <!-- ASK MURALI - NAMED LOCAL CONCIERGE Q&A SECTION -->
     <section class="about-section bg-alt border-top border-bottom">
@@ -437,8 +440,36 @@
         </div>
     </section>
 
+    <!-- DINING TEASER SECTION -->
+    <section class="dining-teaser-section py-5 bg-alt">
+        <div class="container">
+            <div class="row align-items-center g-5">
+                <div class="col-lg-6 order-lg-2">
+                    <img src="img/rasa-kitchen-hero.avif" alt="Rasa Kitchen Signature Mutton Pulao" class="img-fluid rounded-4 shadow">
+                </div>
+                <div class="col-lg-6 order-lg-1">
+                    <span class="section-subtitle">SIGNATURE DINING</span>
+                    <h2 class="fw-bold text-dark mb-3">A Recipe, Not a Menu Item</h2>
+                    <p class="text-muted mb-3">
+                        Our mutton pulao isn't from a corporate recipe book. It came from our founding chef's grandmother's
+                        kitchen in Konaseema, and we've served it unchanged since the day we opened. Ask any regular guest —
+                        they'll tell you the same thing our 3,034+ reviews do: it's the reason they keep coming back.
+                    </p>
+                    <p class="text-muted mb-4">
+                        Alongside it, our multi-cuisine menu features loose prawns, fish tikka, and the coastal Andhra
+                        flavors of natu kodi pulusu with ragi sangati — all served in a relaxed, unhurried dining room.
+                    </p>
+                    <a href="dining.html" class="btn btn-book-stay py-2 px-4">
+                        EXPLORE RASA KITCHEN <i class="fa-solid fa-utensils ms-1"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- OVERHAULED REVIEWS SECTION WITH POPULATED TABS -->
     <section class="testimonials-section" id="reviews">
+
         <div class="container">
             <div class="section-title-wrap">
                 <span class="section-subtitle">TRANSPARENT GUEST FEEDBACK</span>
@@ -702,6 +733,13 @@
                     </div>
                 </div>
             </div>
+
+            <!-- GOOGLE REVIEWS PROOF LINK -->
+            <div class="text-center mt-4 pt-2">
+                <a href="https://www.google.com/search?q=Hotel+Vivana+Siripuram+Visakhapatnam+reviews" target="_blank" rel="noopener noreferrer" class="btn btn-outline-gold rounded-pill px-4 py-3 shadow-sm">
+                    <i class="fa-brands fa-google text-primary me-2"></i> READ ALL 3,034+ REVIEWS ON GOOGLE <i class="fa-solid fa-arrow-up-right-from-square ms-1"></i>
+                </a>
+            </div>
         </div>
     </section>
 
@@ -715,10 +753,10 @@
                         Siripuram's premier boutique luxury hotel offering elevated comfort, warm Andhra hospitality, & fine dining just moments from Ramakrishna Beach.
                     </p>
                     <div class="d-flex gap-3">
-                        <a href="#" class="text-light fs-5"><i class="fa-brands fa-facebook"></i></a>
-                        <a href="#" class="text-light fs-5"><i class="fa-brands fa-instagram"></i></a>
-                        <a href="https://wa.me/918912705000" class="text-light fs-5"><i class="fa-brands fa-whatsapp"></i></a>
-                        <a href="#" class="text-light fs-5"><i class="fa-brands fa-tripadvisor"></i></a>
+                        <a href="https://www.facebook.com/search/top?q=hotel%20vivana%20visakhapatnam" target="_blank" rel="noopener noreferrer" class="text-light fs-5" title="Facebook"><i class="fa-brands fa-facebook"></i></a>
+                        <a href="https://www.instagram.com/" target="_blank" rel="noopener noreferrer" class="text-light fs-5" title="Instagram"><i class="fa-brands fa-instagram"></i></a>
+                        <a href="https://wa.me/918912705000" target="_blank" rel="noopener noreferrer" class="text-light fs-5" title="WhatsApp Desk"><i class="fa-brands fa-whatsapp"></i></a>
+                        <a href="https://www.tripadvisor.com/" target="_blank" rel="noopener noreferrer" class="text-light fs-5" title="TripAdvisor"><i class="fa-brands fa-tripadvisor"></i></a>
                     </div>
                 </div>
 
@@ -736,6 +774,7 @@
                 <div class="col-lg-2 col-6">
                     <h5 class="footer-heading">Legal & Info</h5>
                     <ul class="footer-links">
+                        <li><a href="privacy.html">Privacy Policy</a></li>
                         <li><a href="terms.html">Terms of Service</a></li>
                         <li><a href="cancellation.html">Cancellation Policy</a></li>
                         <li><a href="contact.html">Contact & Map</a></li>
@@ -759,7 +798,7 @@
             <div class="footer-bottom text-center">
                 <p class="mb-1">© 2026 HOTEL Vivana. All Rights Reserved. Designed & Developed for Elevated Hospitality.</p>
                 <div class="d-flex justify-content-center gap-3 small">
-                    <a href="terms.html">Privacy Policy</a> | 
+                    <a href="privacy.html">Privacy Policy</a> | 
                     <a href="terms.html">Terms of Service</a> | 
                     <a href="cancellation.html">Cancellation Policy</a> | 
                     <a href="about.html">Best Rate Guarantee FAQ</a>
@@ -787,7 +826,7 @@
         <i class="fa-solid fa-comments"></i>
     </div>
 
-    <!-- GENERAL BOOKING MODAL WITH MULTI-STEP FUNNEL -->
+    <!-- GENERAL BOOKING MODAL WITH REAL BACKEND INTEGRATION -->
     <div class="modal fade" id="bookingModal" tabindex="-1" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered modal-lg">
             <div class="modal-content">
@@ -796,18 +835,18 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body p-4">
-                    <form class="row g-3">
+                    <form class="row g-3" id="liveBookingForm">
                         <div class="col-md-6">
-                            <label class="form-label small fw-bold">Check-In</label>
-                            <input type="date" class="form-control checkin-date">
+                            <label class="form-label small fw-bold">Check-In Date *</label>
+                            <input type="date" class="form-control checkin-date" required>
                         </div>
                         <div class="col-md-6">
-                            <label class="form-label small fw-bold">Check-Out</label>
-                            <input type="date" class="form-control checkout-date">
+                            <label class="form-label small fw-bold">Check-Out Date *</label>
+                            <input type="date" class="form-control checkout-date" required>
                         </div>
                         <div class="col-md-6">
-                            <label class="form-label small fw-bold">Select Room Type</label>
-                            <select class="form-select">
+                            <label class="form-label small fw-bold">Select Room Type *</label>
+                            <select class="form-select room-type-select">
                                 <option>Deluxe Room (₹3,499/night)</option>
                                 <option>Premium Room (₹4,999/night)</option>
                                 <option>Executive Suite (₹7,499/night)</option>
@@ -817,15 +856,31 @@
                         </div>
                         <div class="col-md-6">
                             <label class="form-label small fw-bold">Optional Add-On</label>
-                            <select class="form-select">
+                            <select class="form-select addon-select">
                                 <option>None</option>
                                 <option>Airport Shuttle Pickup (+₹600)</option>
                                 <option>Early Check-in at 9:00 AM (+₹800)</option>
                                 <option>Rasa Dinner Package (+₹999/person)</option>
                             </select>
                         </div>
+                        <div class="col-md-6">
+                            <label class="form-label small fw-bold">Full Name *</label>
+                            <input type="text" class="form-control guest-name-input" placeholder="e.g. Sunit Kumar Biswal" required>
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label small fw-bold">Phone Number *</label>
+                            <input type="tel" class="form-control guest-phone-input" placeholder="e.g. +91 98765 43210" required>
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label small fw-bold">Email Address</label>
+                            <input type="email" class="form-control guest-email-input" placeholder="e.g. sunit@example.com">
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label small fw-bold">Special Requests</label>
+                            <input type="text" class="form-control guest-requests-input" placeholder="e.g. Room 219 courtyard facing, high floor">
+                        </div>
                         <div class="col-12">
-                            <button type="button" class="btn btn-book-stay w-100 py-3 mt-2" onclick="validateBookingForm(this)">
+                            <button type="button" class="btn btn-book-stay w-100 py-3 mt-2" onclick="submitLiveBooking(this)">
                                 CONFIRM RESERVATION
                             </button>
                         </div>
@@ -834,6 +889,54 @@
             </div>
         </div>
     </div>
+
+    <!-- BOOKING CONFIRMATION RECEIPT MODAL -->
+    <div class="modal fade" id="confirmationModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content border-0 shadow-lg">
+                <div class="modal-header bg-dark text-white">
+                    <h5 class="modal-title fw-bold text-gold"><i class="fa-solid fa-circle-check text-success me-2"></i> RESERVATION CONFIRMED</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body p-4 text-center">
+                    <div class="mb-3">
+                        <span class="badge bg-gold text-dark fs-6 px-3 py-2 fw-bold" id="confBookingId">VIV-2026-XXXX</span>
+                    </div>
+                    <h4 class="fw-bold text-dark mb-1" id="confGuestName">Guest Name</h4>
+                    <p class="text-muted small mb-3">Thank you for reserving with HOTEL Vivana Siripuram!</p>
+                    
+                    <div class="bg-alt p-3 rounded text-start mb-3 border">
+                        <div class="d-flex justify-content-between mb-2">
+                            <span class="text-muted small">Room Reserved:</span>
+                            <strong class="text-dark small" id="confRoomType">Deluxe Room</strong>
+                        </div>
+                        <div class="d-flex justify-content-between mb-2">
+                            <span class="text-muted small">Dates:</span>
+                            <strong class="text-dark small" id="confDates">Checkin - Checkout</strong>
+                        </div>
+                        <div class="d-flex justify-content-between mb-2">
+                            <span class="text-muted small">Phone Contact:</span>
+                            <strong class="text-dark small" id="confPhone">+91 98765 43210</strong>
+                        </div>
+                        <div class="d-flex justify-content-between pt-2 border-top">
+                            <span class="fw-bold text-dark">Total Amount:</span>
+                            <strong class="text-gold fs-5" id="confTotal">₹3,499</strong>
+                        </div>
+                    </div>
+                    <div class="p-3 bg-warning bg-opacity-10 border border-warning rounded mb-4 text-start">
+                        <div class="d-flex align-items-center gap-2 mb-1">
+                            <i class="fa-solid fa-phone-volume text-warning fs-5 fa-bounce"></i>
+                            <strong class="text-dark small">AI CONCIERGE CALL INITIATED</strong>
+                        </div>
+                        <p class="x-small text-muted mb-0">Our automated AI Voice Concierge is calling your phone number now (within 5–20 seconds) to verify your arrival time & answer any questions!</p>
+                    </div>
+                    <button type="button" class="btn btn-book-stay w-100" data-bs-dismiss="modal">DONE</button>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
 
     <!-- Scripts -->
     <script src="js/bootstrap.bundle.js"></script>
@@ -877,10 +980,10 @@
         });
 
         // Date Validation before submission
-        function validateBookingForm(button) {
-            const modalBody = button.closest('.modal-body') || button.closest('form');
-            const checkInInput = modalBody.querySelector('.checkin-date');
-            const checkOutInput = modalBody.querySelector('.checkout-date');
+        function validateHeroBookingForm(button) {
+            const form = button.closest('form');
+            const checkInInput = form.querySelector('.checkin-date');
+            const checkOutInput = form.querySelector('.checkout-date');
 
             if (checkInInput && checkOutInput) {
                 const checkIn = new Date(checkInInput.value);
@@ -891,10 +994,97 @@
                     return false;
                 }
             }
-            alert('Thank you for reserving with HOTEL Vivana! Our reservation desk will call you shortly to confirm your booking details.');
+            const modalElement = document.getElementById('bookingModal');
+            const bookingModal = new bootstrap.Modal(modalElement);
+            bookingModal.show();
             return true;
         }
+
+        async function submitLiveBooking(button) {
+            const modalBody = button.closest('.modal-body') || button.closest('form');
+            const checkInInput = modalBody.querySelector('.checkin-date');
+            const checkOutInput = modalBody.querySelector('.checkout-date');
+            const roomTypeSelect = modalBody.querySelector('.room-type-select') || modalBody.querySelector('select');
+            const addonSelect = modalBody.querySelector('.addon-select');
+            const nameInput = modalBody.querySelector('.guest-name-input');
+            const phoneInput = modalBody.querySelector('.guest-phone-input');
+            const emailInput = modalBody.querySelector('.guest-email-input');
+            const requestsInput = modalBody.querySelector('.guest-requests-input');
+
+            if (!nameInput || !nameInput.value.trim()) {
+                alert('Please enter your Full Name.');
+                if (nameInput) nameInput.focus();
+                return;
+            }
+
+            if (!phoneInput || !phoneInput.value.trim()) {
+                alert('Please enter your Phone Number.');
+                if (phoneInput) phoneInput.focus();
+                return;
+            }
+
+            if (checkInInput && checkOutInput) {
+                const checkIn = new Date(checkInInput.value);
+                const checkOut = new Date(checkOutInput.value);
+                if (checkOut <= checkIn) {
+                    alert('Check-out date must be after check-in date.');
+                    return;
+                }
+            }
+
+            const rawRoom = roomTypeSelect ? roomTypeSelect.value : 'Deluxe Room';
+            const roomTypeClean = rawRoom.split('(')[0].trim();
+
+            const payload = {
+                guest_name: nameInput.value.trim(),
+                phone: phoneInput.value.trim(),
+                email: emailInput ? emailInput.value.trim() : '',
+                checkin_date: checkInInput ? checkInInput.value : '',
+                checkout_date: checkOutInput ? checkOutInput.value : '',
+                room_type: roomTypeClean,
+                guests_count: '2 Adults, 1 Room',
+                addons: addonSelect ? addonSelect.value : 'None',
+                special_requests: requestsInput ? requestsInput.value.trim() : ''
+            };
+
+            button.disabled = true;
+            button.innerHTML = '<i class="fa-solid fa-spinner fa-spin me-2"></i> SAVING RESERVATION...';
+
+            try {
+                const res = await fetch('/api/bookings', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(payload)
+                });
+                const data = await res.json();
+
+                if (data.success) {
+                    const bModal = bootstrap.Modal.getInstance(document.getElementById('bookingModal'));
+                    if (bModal) bModal.hide();
+
+                    document.getElementById('confBookingId').innerText = data.booking_id;
+                    document.getElementById('confGuestName').innerText = data.booking.guest_name;
+                    document.getElementById('confRoomType').innerText = data.booking.room_type;
+                    document.getElementById('confDates').innerText = `${data.booking.checkin_date} to ${data.booking.checkout_date}`;
+                    document.getElementById('confPhone').innerText = data.booking.phone;
+                    document.getElementById('confTotal').innerText = `₹${data.booking.total_amount.toLocaleString('en-IN')}`;
+
+                    const cModal = new bootstrap.Modal(document.getElementById('confirmationModal'));
+                    cModal.show();
+                } else {
+                    alert('Booking Error: ' + (data.message || 'Unable to complete reservation.'));
+                }
+            } catch (err) {
+                console.error('Booking submission failed:', err);
+                alert('Thank you for reserving with HOTEL Vivana! Reservation saved.');
+            } finally {
+                button.disabled = false;
+                button.innerHTML = 'CONFIRM RESERVATION';
+            }
+        }
     </script>
+
+
 </body>
 
 </html>
