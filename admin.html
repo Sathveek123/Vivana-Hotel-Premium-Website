@@ -876,6 +876,31 @@
             renderFullBookingsTable(filtered);
         }
 
+        // Luxury Vivana Glassmorphic Toast Pop-Up System
+        function showVivanaToast(title, message, type = 'warning') {
+            let container = document.getElementById('vivanaToastContainer');
+            if (!container) {
+                container = document.createElement('div');
+                container.id = 'vivanaToastContainer';
+                container.className = 'vivana-toast-container';
+                document.body.appendChild(container);
+            }
+            const iconMap = { warning: 'fa-triangle-exclamation toast-warning', error: 'fa-circle-exclamation toast-error', success: 'fa-circle-check toast-success', info: 'fa-circle-info toast-info' };
+            const toast = document.createElement('div');
+            toast.className = 'vivana-toast-card';
+            toast.innerHTML = `
+                <i class="fa-solid ${iconMap[type] || iconMap.warning} vivana-toast-icon"></i>
+                <div class="vivana-toast-body">
+                    <div class="vivana-toast-title">${title}</div>
+                    <p class="vivana-toast-message">${message}</p>
+                </div>
+                <button class="vivana-toast-close" onclick="this.parentElement.remove()"><i class="fa-solid fa-xmark"></i></button>
+                <div class="vivana-toast-progress"></div>
+            `;
+            container.appendChild(toast);
+            setTimeout(() => { toast.classList.add('toast-hiding'); setTimeout(() => toast.remove(), 300); }, 4200);
+        }
+
         async function updateBookingStatus(id, newStatus) {
             try {
                 const res = await fetch(`/api/bookings/${id}`, {
@@ -885,12 +910,13 @@
                 });
                 const data = await res.json();
                 if (data.success) {
-                    alert(`Booking ${id} status updated to ${newStatus.toUpperCase()}`);
+                    showVivanaToast('Status Updated', `Booking ${id} set to ${newStatus.toUpperCase()}`, 'success');
                 }
             } catch (err) {
                 console.error('Failed to update status:', err);
             }
         }
+
 
         async function viewBookingDetail(id) {
             const booking = allBookingsData.find(b => b.id === id);
@@ -926,11 +952,12 @@
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify({ notes })
                 });
-                alert('Staff notes saved successfully.');
+                showVivanaToast('Notes Saved', 'Staff notes saved successfully.', 'success');
             } catch (err) {
                 console.error('Error saving notes:', err);
             }
         }
+
 
         async function loadGuestsData() {
             try {
@@ -1093,10 +1120,11 @@
                 });
                 const data = await res.json();
                 if (data.success) {
-                    alert(`Manual booking ${data.booking_id} created successfully!`);
+                    showVivanaToast('Booking Created!', `Manual booking ${data.booking_id} created successfully.`, 'success');
                     bootstrap.Modal.getInstance(document.getElementById('manualBookingModal')).hide();
                     loadFullBookings();
                 }
+
             } catch (err) {
                 console.error(err);
             }

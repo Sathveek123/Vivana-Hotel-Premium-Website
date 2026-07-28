@@ -783,3 +783,109 @@ a:hover {
     border-top: 1px solid var(--border-color);
     border-bottom: 1px solid var(--border-color);
 }
+
+/* Luxury Toast Pop-Up UI System */
+.vivana-toast-container {
+    position: fixed;
+    top: 24px;
+    right: 24px;
+    z-index: 99999;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    max-width: 420px;
+    width: calc(100% - 48px);
+    pointer-events: none;
+}
+
+.vivana-toast-card {
+    pointer-events: auto;
+    background: rgba(28, 25, 23, 0.96);
+    backdrop-filter: blur(16px);
+    color: #FDFBF7;
+    border: 1px solid #C5A059;
+    border-radius: 12px;
+    padding: 16px 20px;
+    box-shadow: 0 12px 35px rgba(0, 0, 0, 0.35);
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+    animation: toastSlideIn 0.35s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    position: relative;
+    overflow: hidden;
+}
+
+.vivana-toast-card.toast-hiding {
+    animation: toastFadeOut 0.3s ease forwards;
+}
+
+.vivana-toast-icon {
+    font-size: 22px;
+    flex-shrink: 0;
+    margin-top: 2px;
+}
+
+.vivana-toast-icon.toast-warning { color: #F59E0B; }
+.vivana-toast-icon.toast-error { color: #EF4444; }
+.vivana-toast-icon.toast-success { color: #10B981; }
+.vivana-toast-icon.toast-info { color: #3B82F6; }
+
+.vivana-toast-body {
+    flex-grow: 1;
+}
+
+.vivana-toast-title {
+    font-family: var(--font-heading);
+    font-size: 15px;
+    font-weight: 700;
+    color: #C5A059;
+    margin-bottom: 2px;
+    letter-spacing: 0.5px;
+}
+
+.vivana-toast-message {
+    font-size: 13px;
+    color: #E7E5E4;
+    line-height: 1.4;
+    margin: 0;
+}
+
+.vivana-toast-close {
+    background: transparent;
+    border: none;
+    color: #A8A29E;
+    font-size: 16px;
+    cursor: pointer;
+    padding: 0;
+    margin-left: 6px;
+    transition: color 0.2s;
+}
+
+.vivana-toast-close:hover {
+    color: #FFFFFF;
+}
+
+.vivana-toast-progress {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    height: 3px;
+    background: var(--gold-primary);
+    width: 100%;
+    animation: toastProgress 4.5s linear forwards;
+}
+
+@keyframes toastSlideIn {
+    from { transform: translateX(100%) scale(0.9); opacity: 0; }
+    to { transform: translateX(0) scale(1); opacity: 1; }
+}
+
+@keyframes toastFadeOut {
+    from { transform: translateX(0); opacity: 1; }
+    to { transform: translateX(100%); opacity: 0; }
+}
+
+@keyframes toastProgress {
+    from { width: 100%; }
+    to { width: 0%; }
+}

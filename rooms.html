@@ -384,16 +384,16 @@
                             </select>
                         </div>
                         <div class="col-md-6">
-                            <label class="form-label small fw-bold">Full Name</label>
-                            <input type="text" class="form-control" placeholder="Enter Full Name">
+                            <label class="form-label small fw-bold">Full Name *</label>
+                            <input type="text" class="form-control guest-name-input" placeholder="Enter Full Name" required>
                         </div>
                         <div class="col-md-6">
-                            <label class="form-label small fw-bold">Phone Number</label>
-                            <input type="tel" class="form-control" placeholder="Enter Mobile Number">
+                            <label class="form-label small fw-bold">Phone Number *</label>
+                            <input type="tel" class="form-control guest-phone-input" placeholder="Enter Mobile Number" required>
                         </div>
                         <div class="col-12">
-                            <button type="button" class="btn btn-book-stay w-100 py-3 mt-2" onclick="alert('Booking Request Submitted! Our reservation desk will call you to confirm payment & deposit details.')">
-                                PROCEED TO STEP 3: CONFIRM RESERVATION
+                            <button type="button" class="btn btn-book-stay w-100 py-3 mt-2" onclick="submitLiveBooking(this)">
+                                PROCEED TO CONFIRM RESERVATION
                             </button>
                         </div>
                     </form>
@@ -405,11 +405,90 @@
     <!-- Scripts -->
     <script src="js/bootstrap.bundle.js"></script>
     <script>
+        function showVivanaToast(title, message, type = 'warning') {
+            let container = document.getElementById('vivanaToastContainer');
+            if (!container) {
+                container = document.createElement('div');
+                container.id = 'vivanaToastContainer';
+                container.className = 'vivana-toast-container';
+                document.body.appendChild(container);
+            }
+            const iconMap = { warning: 'fa-triangle-exclamation toast-warning', error: 'fa-circle-exclamation toast-error', success: 'fa-circle-check toast-success', info: 'fa-circle-info toast-info' };
+            const toast = document.createElement('div');
+            toast.className = 'vivana-toast-card';
+            toast.innerHTML = `
+                <i class="fa-solid ${iconMap[type] || iconMap.warning} vivana-toast-icon"></i>
+                <div class="vivana-toast-body">
+                    <div class="vivana-toast-title">${title}</div>
+                    <p class="vivana-toast-message">${message}</p>
+                </div>
+                <button class="vivana-toast-close" onclick="this.parentElement.remove()"><i class="fa-solid fa-xmark"></i></button>
+                <div class="vivana-toast-progress"></div>
+            `;
+            container.appendChild(toast);
+            setTimeout(() => { toast.classList.add('toast-hiding'); setTimeout(() => toast.remove(), 300); }, 4200);
+        }
+
+        async function submitLiveBooking(button) {
+            const modalBody = button.closest('.modal-body') || button.closest('form');
+            const checkInInput = modalBody.querySelector('.checkin-date');
+            const checkOutInput = modalBody.querySelector('.checkout-date');
+            const roomTypeSelect = modalBody.querySelector('.room-type-select') || modalBody.querySelector('select');
+            const addonSelect = modalBody.querySelector('.addon-select');
+            const nameInput = modalBody.querySelector('.guest-name-input');
+            const phoneInput = modalBody.querySelector('.guest-phone-input');
+
+            if (!nameInput || !nameInput.value.trim()) {
+                showVivanaToast('Full Name Required', 'Please enter your Full Name.', 'warning');
+                if (nameInput) nameInput.focus();
+                return;
+            }
+
+            if (!phoneInput || !phoneInput.value.trim()) {
+                showVivanaToast('Phone Number Required', 'Please enter your Phone Number.', 'warning');
+                if (phoneInput) phoneInput.focus();
+                return;
+            }
+
+            const rawRoom = roomTypeSelect ? roomTypeSelect.value : 'Deluxe Room';
+            const payload = {
+                guest_name: nameInput.value.trim(),
+                phone: phoneInput.value.trim(),
+                checkin_date: checkInInput ? checkInInput.value : new Date().toISOString().split('T')[0],
+                checkout_date: checkOutInput ? checkOutInput.value : new Date(Date.now() + 86400000).toISOString().split('T')[0],
+                room_type: rawRoom.split('(')[0].trim(),
+                guests_count: '2 Adults, 1 Room',
+                addons: addonSelect ? addonSelect.value : 'None',
+                special_requests: 'Rooms page funnel reservation'
+            };
+
+            button.disabled = true;
+            button.innerHTML = '<i class="fa-solid fa-spinner fa-spin me-2"></i> SAVING...';
+
+            try {
+                const res = await fetch('/api/bookings', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(payload) });
+                const data = await res.json();
+                if (data.success) {
+                    showVivanaToast('Reservation Confirmed!', `Booking ${data.booking_id} saved. Expect an AI Concierge call within 20 seconds.`, 'success');
+                    const modal = bootstrap.Modal.getInstance(document.getElementById('bookingModal'));
+                    if (modal) modal.hide();
+                } else {
+                    showVivanaToast('Booking Error', data.message || 'Error creating reservation.', 'error');
+                }
+            } catch (err) {
+                showVivanaToast('Connection Error', 'Unable to reach booking server.', 'error');
+            } finally {
+                button.disabled = false;
+                button.innerHTML = 'PROCEED TO CONFIRM RESERVATION';
+            }
+        }
+
         function scrollRoomsContainer(amount) {
             const container = document.getElementById('roomsScrollContainer');
             container.scrollBy({ left: amount, behavior: 'smooth' });
         }
     </script>
+
 </body>
 
 </html>

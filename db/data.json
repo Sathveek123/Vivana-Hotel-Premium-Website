@@ -1,6 +1,23 @@
 {
   "bookings": [
     {
+      "id": "VIV-2026-9683",
+      "guest_name": "Sunit Kumar Biswal",
+      "phone": "9876543210",
+      "email": "N/A",
+      "checkin_date": "2026-07-28",
+      "checkout_date": "2026-07-29",
+      "room_type": "Deluxe Room",
+      "guests_count": "2 Adults, 1 Room",
+      "addons": "None",
+      "special_requests": "Standard luxury stay request.",
+      "total_amount": 3499,
+      "status": "pending",
+      "payment_status": "pending",
+      "vapi_call_status": "initiating",
+      "created_at": "2026-07-28T20:25:44.837Z"
+    },
+    {
       "id": "VIV-2026-9286",
       "guest_name": "Sunit Kumar Biswal",
       "phone": "9876543210",

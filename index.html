@@ -983,6 +983,43 @@
             });
         });
 
+        // Luxury Vivana Glassmorphic Toast Pop-Up System
+        function showVivanaToast(title, message, type = 'warning') {
+            let container = document.getElementById('vivanaToastContainer');
+            if (!container) {
+                container = document.createElement('div');
+                container.id = 'vivanaToastContainer';
+                container.className = 'vivana-toast-container';
+                document.body.appendChild(container);
+            }
+
+            const iconMap = {
+                warning: 'fa-triangle-exclamation toast-warning',
+                error: 'fa-circle-exclamation toast-error',
+                success: 'fa-circle-check toast-success',
+                info: 'fa-circle-info toast-info'
+            };
+
+            const toast = document.createElement('div');
+            toast.className = 'vivana-toast-card';
+            toast.innerHTML = `
+                <i class="fa-solid ${iconMap[type] || iconMap.warning} vivana-toast-icon"></i>
+                <div class="vivana-toast-body">
+                    <div class="vivana-toast-title">${title}</div>
+                    <p class="vivana-toast-message">${message}</p>
+                </div>
+                <button class="vivana-toast-close" onclick="this.parentElement.remove()"><i class="fa-solid fa-xmark"></i></button>
+                <div class="vivana-toast-progress"></div>
+            `;
+
+            container.appendChild(toast);
+
+            setTimeout(() => {
+                toast.classList.add('toast-hiding');
+                setTimeout(() => toast.remove(), 300);
+            }, 4200);
+        }
+
         // Date Validation before submission & Sync Hero -> Modal
         function validateHeroBookingForm(button) {
             const form = button.closest('form');
@@ -995,7 +1032,7 @@
                 const checkOut = new Date(checkOutInput.value);
 
                 if (checkOut <= checkIn) {
-                    alert('Check-out date must be after check-in date. Please adjust your dates.');
+                    showVivanaToast('Invalid Stay Dates', 'Check-out date must be after check-in date. Please adjust your dates.', 'warning');
                     return false;
                 }
 
@@ -1033,14 +1070,22 @@
             const requestsInput = modalBody.querySelector('.guest-requests-input');
 
             if (!nameInput || !nameInput.value.trim()) {
-                alert('Please enter your Full Name.');
-                if (nameInput) nameInput.focus();
+                showVivanaToast('Full Name Required', 'Please enter your Full Name to complete your reservation.', 'warning');
+                if (nameInput) {
+                    nameInput.classList.add('border-danger');
+                    nameInput.focus();
+                    setTimeout(() => nameInput.classList.remove('border-danger'), 3000);
+                }
                 return;
             }
 
             if (!phoneInput || !phoneInput.value.trim()) {
-                alert('Please enter your Phone Number.');
-                if (phoneInput) phoneInput.focus();
+                showVivanaToast('Phone Number Required', 'Please enter your Phone Number for booking confirmation & AI call.', 'warning');
+                if (phoneInput) {
+                    phoneInput.classList.add('border-danger');
+                    phoneInput.focus();
+                    setTimeout(() => phoneInput.classList.remove('border-danger'), 3000);
+                }
                 return;
             }
 
@@ -1048,7 +1093,7 @@
                 const checkIn = new Date(checkInInput.value);
                 const checkOut = new Date(checkOutInput.value);
                 if (checkOut <= checkIn) {
-                    alert('Check-out date must be after check-in date.');
+                    showVivanaToast('Invalid Dates', 'Check-out date must be after check-in date.', 'warning');
                     return;
                 }
             }
@@ -1090,19 +1135,22 @@
                     document.getElementById('confPhone').innerText = data.booking.phone;
                     document.getElementById('confTotal').innerText = `₹${data.booking.total_amount.toLocaleString('en-IN')}`;
 
+                    showVivanaToast('Reservation Saved!', `Booking ID ${data.booking_id} has been recorded in database.`, 'success');
+
                     const cModal = new bootstrap.Modal(document.getElementById('confirmationModal'));
                     cModal.show();
                 } else {
-                    alert('Booking Error: ' + (data.message || 'Unable to complete reservation.'));
+                    showVivanaToast('Reservation Error', data.message || 'Unable to complete reservation.', 'error');
                 }
             } catch (err) {
                 console.error('Booking submission error:', err);
-                alert('Connection error saving reservation. Please try again.');
+                showVivanaToast('Connection Error', 'Unable to reach booking server. Please check your connection.', 'error');
             } finally {
                 button.disabled = false;
                 button.innerHTML = 'CONFIRM RESERVATION';
             }
         }
+
     </script>
 
 
