@@ -729,8 +729,24 @@
                 document.getElementById('authOverlay').classList.add('d-none');
                 document.getElementById('adminApp').classList.remove('d-none');
                 loadDashboardData();
+                loadFullBookings();
             }
         }
+
+        // Auto-refresh live bookings when window comes back in focus or every 10 seconds
+        window.addEventListener('focus', () => {
+            if (localStorage.getItem('vivana_admin_auth') === 'authenticated') {
+                loadDashboardData();
+                loadFullBookings();
+            }
+        });
+        setInterval(() => {
+            if (localStorage.getItem('vivana_admin_auth') === 'authenticated') {
+                loadDashboardData();
+                loadFullBookings();
+            }
+        }, 10000);
+
 
         function logoutAdmin() {
             localStorage.removeItem('vivana_admin_auth');

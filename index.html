@@ -983,11 +983,12 @@
             });
         });
 
-        // Date Validation before submission
+        // Date Validation before submission & Sync Hero -> Modal
         function validateHeroBookingForm(button) {
             const form = button.closest('form');
             const checkInInput = form.querySelector('.checkin-date');
             const checkOutInput = form.querySelector('.checkout-date');
+            const roomSelect = form.querySelector('select');
 
             if (checkInInput && checkOutInput) {
                 const checkIn = new Date(checkInInput.value);
@@ -996,6 +997,22 @@
                 if (checkOut <= checkIn) {
                     alert('Check-out date must be after check-in date. Please adjust your dates.');
                     return false;
+                }
+
+                // Sync values to Modal inputs
+                const modalCheckIn = document.querySelector('#bookingModal .checkin-date');
+                const modalCheckOut = document.querySelector('#bookingModal .checkout-date');
+                const modalRoom = document.querySelector('#bookingModal .room-type-select');
+
+                if (modalCheckIn && checkInInput.value) modalCheckIn.value = checkInInput.value;
+                if (modalCheckOut && checkOutInput.value) modalCheckOut.value = checkOutInput.value;
+                if (modalRoom && roomSelect && roomSelect.value) {
+                    for (let opt of modalRoom.options) {
+                        if (opt.text.includes(roomSelect.value.split('(')[0].trim())) {
+                            modalRoom.value = opt.value;
+                            break;
+                        }
+                    }
                 }
             }
             const modalElement = document.getElementById('bookingModal');
@@ -1079,8 +1096,8 @@
                     alert('Booking Error: ' + (data.message || 'Unable to complete reservation.'));
                 }
             } catch (err) {
-                console.error('Booking submission failed:', err);
-                alert('Thank you for reserving with HOTEL Vivana! Reservation saved.');
+                console.error('Booking submission error:', err);
+                alert('Connection error saving reservation. Please try again.');
             } finally {
                 button.disabled = false;
                 button.innerHTML = 'CONFIRM RESERVATION';
