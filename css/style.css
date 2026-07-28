@@ -187,7 +187,9 @@ a:hover {
     justify-content: center;
     overflow: hidden;
     padding-top: 80px;
+    background: #1C1917 url('../img/1.avif') center/cover no-repeat;
 }
+
 
 .bg-video {
     position: absolute;

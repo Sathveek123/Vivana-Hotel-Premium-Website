@@ -59,10 +59,19 @@ const ADDON_PRICES = {
     'Rasa Dinner Package (+₹999/person)': 999
 };
 
-// Route: Admin Dashboard alias
-app.get('/admin', (req, res) => {
-    res.sendFile(path.join(__dirname, 'admin.html'));
-});
+// Clean Extensionless Page Routes
+app.get('/', (req, res) => res.sendFile(path.join(__dirname, 'index.html')));
+app.get('/about', (req, res) => res.sendFile(path.join(__dirname, 'about.html')));
+app.get('/rooms', (req, res) => res.sendFile(path.join(__dirname, 'rooms.html')));
+app.get('/dining', (req, res) => res.sendFile(path.join(__dirname, 'dining.html')));
+app.get('/events', (req, res) => res.sendFile(path.join(__dirname, 'events.html')));
+app.get('/offers', (req, res) => res.sendFile(path.join(__dirname, 'offers.html')));
+app.get('/contact', (req, res) => res.sendFile(path.join(__dirname, 'contact.html')));
+app.get('/privacy', (req, res) => res.sendFile(path.join(__dirname, 'privacy.html')));
+app.get('/terms', (req, res) => res.sendFile(path.join(__dirname, 'terms.html')));
+app.get('/cancellation', (req, res) => res.sendFile(path.join(__dirname, 'cancellation.html')));
+app.get('/admin', (req, res) => res.sendFile(path.join(__dirname, 'admin.html')));
+
 
 // ==========================================
 // API ENDPOINTS
