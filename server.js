@@ -16,33 +16,45 @@ app.use(express.urlencoded({ extended: true }));
 // Register Vapi router
 app.use('/api', vapiRouter);
 
-// Helper Functions for Data Persistence
+let inMemoryDb = null;
+
 function readData() {
     try {
-        if (!fs.existsSync(DB_FILE)) {
-            return { bookings: [], rooms: [], events: [], offers: [], settings: {} };
+        if (inMemoryDb) return inMemoryDb;
+        const tmpFile = path.join('/tmp', 'data.json');
+        if (fs.existsSync(tmpFile)) {
+            inMemoryDb = JSON.parse(fs.readFileSync(tmpFile, 'utf8'));
+            return inMemoryDb;
         }
-        const data = fs.readFileSync(DB_FILE, 'utf8');
-        return JSON.parse(data);
-    } catch (err) {
-        console.error('Error reading DB_FILE:', err);
+        if (fs.existsSync(DB_FILE)) {
+            inMemoryDb = JSON.parse(fs.readFileSync(DB_FILE, 'utf8'));
+            return inMemoryDb;
+        }
         return { bookings: [], rooms: [], events: [], offers: [], settings: {} };
+    } catch (err) {
+        console.error('Error reading DB:', err);
+        return inMemoryDb || { bookings: [], rooms: [], events: [], offers: [], settings: {} };
     }
 }
 
 function writeData(data) {
+    inMemoryDb = data;
     try {
-        const dir = path.dirname(DB_FILE);
-        if (!fs.existsSync(dir)) {
-            fs.mkdirSync(dir, { recursive: true });
-        }
-        fs.writeFileSync(DB_FILE, JSON.stringify(data, null, 2), 'utf8');
+        const tmpFile = path.join('/tmp', 'data.json');
+        fs.writeFileSync(tmpFile, JSON.stringify(data, null, 2), 'utf8');
         return true;
     } catch (err) {
-        console.error('Error writing DB_FILE:', err);
-        return false;
+        try {
+            if (fs.existsSync(DB_FILE)) {
+                fs.writeFileSync(DB_FILE, JSON.stringify(data, null, 2), 'utf8');
+            }
+        } catch (e) {
+            console.error('Write warning:', e.message);
+        }
+        return true;
     }
 }
+
 
 // Room Pricing Map helper
 const ROOM_PRICES = {
@@ -362,10 +374,15 @@ app.post('/api/settings', (req, res) => {
 // Static File Server
 app.use(express.static(path.join(__dirname)));
 
-app.listen(PORT, () => {
-    console.log(`=================================================`);
-    console.log(`  HOTEL VIVANA BACKEND API & VAPI VOICE AGENT SERVER  `);
-    console.log(`  URL: http://localhost:${PORT}`);
-    console.log(`  Admin Panel: http://localhost:${PORT}/admin`);
-    console.log(`=================================================`);
-});
+if (process.env.NODE_ENV !== 'production' && !process.env.VERCEL) {
+    app.listen(PORT, () => {
+        console.log(`=================================================`);
+        console.log(`  HOTEL VIVANA BACKEND API & VAPI VOICE AGENT SERVER  `);
+        console.log(`  URL: http://localhost:${PORT}`);
+        console.log(`  Admin Panel: http://localhost:${PORT}/admin`);
+        console.log(`=================================================`);
+    });
+}
+
+module.exports = app;
+

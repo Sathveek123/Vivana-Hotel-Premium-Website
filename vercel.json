@@ -11,6 +11,6 @@
     { "source": "/privacy", "destination": "/privacy.html" },
     { "source": "/terms", "destination": "/terms.html" },
     { "source": "/cancellation", "destination": "/cancellation.html" },
-    { "source": "/api/:path*", "destination": "/server.js" }
+    { "source": "/api/:path*", "destination": "/api/index.js" }
   ]
 }
