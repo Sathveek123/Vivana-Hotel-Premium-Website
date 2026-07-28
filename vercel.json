@@ -10,7 +10,6 @@
     { "source": "/contact", "destination": "/contact.html" },
     { "source": "/privacy", "destination": "/privacy.html" },
     { "source": "/terms", "destination": "/terms.html" },
-    { "source": "/cancellation", "destination": "/cancellation.html" },
-    { "source": "/api/:path*", "destination": "/api/index.js" }
+    { "source": "/cancellation", "destination": "/cancellation.html" }
   ]
 }
